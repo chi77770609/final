@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>超音波針尖偵測生醫 AI 專題 | NTUST</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="國立臺灣科技大學生醫 AI 專題：以 3D CNN 與 ROI 設計實作超音波引導針尖偵測，展示方法介紹、Demo 影片、程式碼與實驗結果。" />
+  <meta name="description" content="國立臺灣科技大學生醫 AI 專題：以 3D CNN 與 ROI 設計實作超音波引導針尖偵測，展示方法介紹、互動介紹、Demo 影片、程式碼與實驗結果。" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -165,7 +165,6 @@
       border: 1px solid rgba(148, 163, 184, 0.6);
     }
 
-    /* Cards & grids */
     .text-card {
       background: rgba(15, 23, 42, 0.9);
       border-radius: 1rem;
@@ -295,6 +294,70 @@
       padding: 0.8rem 0 1.4rem;
     }
 
+    /* 生醫互動專區 */
+    .bio-selector {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 1rem 1.1rem;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.7);
+      margin-bottom: 0.5rem;
+    }
+    .bio-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .bio-button {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: transparent;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease,
+                  box-shadow 0.15s ease, transform 0.1s ease,
+                  border-color 0.15s ease;
+      white-space: nowrap;
+    }
+    .bio-button:hover {
+      background: rgba(15, 23, 42, 0.9);
+      transform: translateY(-1px);
+    }
+    .bio-button.active {
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      border-color: transparent;
+      color: #f9fafb;
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.6);
+    }
+    .bio-panel-wrap {
+      border-radius: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 0.9rem 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.9rem;
+    }
+    .bio-topic-panel {
+      display: none;
+      color: #e5e7eb;
+    }
+    .bio-topic-panel.active { display: block; }
+    .bio-topic-panel p + p { margin-top: 0.6rem; }
+    .bio-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.6rem;
+      display: grid;
+      gap: 0.25rem;
+      font-size: 0.9rem;
+    }
+    .bio-list li::before {
+      content: "• ";
+      color: #38bdf8;
+    }
+
     /* RWD */
     @media (max-width: 900px) {
       .hero { grid-template-columns: minmax(0, 1fr); }
@@ -332,6 +395,7 @@
       <nav>
         <ul id="navList">
           <li><a href="#hero">首頁</a></li>
+          <li><a href="#bio">生醫互動</a></li>
           <li><a href="#project">專題介紹</a></li>
           <li><a href="#demo">Demo 影片</a></li>
           <li><a href="#code">程式碼</a></li>
@@ -356,7 +420,7 @@
         <p class="hero-subtitle">
           本專題以 40 段超音波影片為資料，結合 3D CNN（R(2+1)D-18）與 ROI 設計，
           自動預測針尖在影像中的座標，並以線性修正方法穩定整段軌跡，
-          期望在未來協助臨床人員更直覺地掌握針尖位置。
+          期望未來能協助臨床人員更直覺地掌握針尖位置。
         </p>
 
         <div class="hero-buttons">
@@ -389,7 +453,7 @@
           <div class="hero-card-title">專題一眼看重點</div>
           <p class="muted">
             自建 40 段超音波資料集，將針尖座標標註後轉成 ROI 比例進行迴歸，
-            再搭配線性「b 方法」修正，讓針尖軌跡既準確又平滑。
+            再搭配線性「b 方法」修正，讓針尖軌跡兼顧準確度與平滑度。
           </p>
         </div>
         <div>
@@ -406,6 +470,87 @@
       </aside>
     </section>
 
+    <!-- 生醫 AI 互動專區 -->
+    <section id="bio">
+      <h2 class="section-title">生醫 AI 互動專區</h2>
+
+      <div class="bio-selector">
+        <div class="bio-buttons">
+          <button class="bio-button active" data-bio-target="bio-needle">
+            針尖偵測專題總覽
+          </button>
+          <button class="bio-button" data-bio-target="bio-dataset">
+            資料集與標註方式
+          </button>
+          <button class="bio-button" data-bio-target="bio-model">
+            模型與訓練細節
+          </button>
+          <button class="bio-button" data-bio-target="bio-future">
+            未來延伸應用
+          </button>
+        </div>
+
+        <div class="bio-panel-wrap">
+          <!-- Panel 1 -->
+          <div class="bio-topic-panel active" id="bio-needle">
+            <p>
+              這個專題的核心目標是：在超音波影像中自動找出針尖位置，
+              協助醫師在神經阻斷、血管穿刺等侵入式操作中，即時判斷針尖是否在安全位置。
+            </p>
+            <ul class="bio-list">
+              <li>使用 40 段自行蒐集的超音波影片作為資料。</li>
+              <li>為每個 frame 標註針尖 (x, y) 座標，以 CSV 儲存。</li>
+              <li>透過 3D CNN + ROI 設計，輸出針尖軌跡並疊加在影像上。</li>
+              <li>搭配線性「b 方法」修正，使整段軌跡更平滑穩定。</li>
+            </ul>
+          </div>
+
+          <!-- Panel 2 -->
+          <div class="bio-topic-panel" id="bio-dataset">
+            <p>
+              資料部分使用實際量測的超音波影像，每段影片約 100 張，
+              針尖位置由人工逐 frame 標註。為了讓模型專注在真正重要的畫面區域，
+              我定義一個固定 ROI，只在 ROI 內進行訓練與評估。
+            </p>
+            <ul class="bio-list">
+              <li>每段影片搭配一個 CSV 檔，內容為 frame index 與 (x, y) 座標。</li>
+              <li>將座標轉成 ROI 比例 (rx, ry)，統一尺度，介於 [0, 1]。</li>
+              <li>不在 ROI 內的點不計入 loss，降低背景雜訊影響。</li>
+              <li>未來可擴充更多病人與不同機台，提升模型泛化能力。</li>
+            </ul>
+          </div>
+
+          <!-- Panel 3 -->
+          <div class="bio-topic-panel" id="bio-model">
+            <p>
+              模型選擇 3D R(2+1)D-18，是同時利用空間與時間資訊的卷積網路。
+              輸入為一小段連續的超音波影像 clip，輸出該 clip 中目標影格的 ROI 座標 (rx, ry)。
+            </p>
+            <ul class="bio-list">
+              <li>框架使用 PyTorch，支援 GPU 加速訓練與推論。</li>
+              <li>輸入尺寸為 224×224，clip 長度與 stride 可調整。</li>
+              <li>Loss 以預測座標還原成像素後，與標註座標做 L1 / MAE。</li>
+              <li>訓練過程使用 K-fold、學習率調整與早停策略控制收斂。</li>
+            </ul>
+          </div>
+
+          <!-- Panel 4 -->
+          <div class="bio-topic-panel" id="bio-future">
+            <p>
+              除了目前的針尖偵測，本專題流程也可以延伸到其他生醫影像任務，
+              例如導管尖端追蹤、病灶位置預測或術中導航輔助等。
+            </p>
+            <ul class="bio-list">
+              <li>與臨床端合作，蒐集更多實際案例與不同操作情境。</li>
+              <li>結合分割模型，標出重要器官或神經區域，提高安全性。</li>
+              <li>加入不確定度估計，讓系統能提示「模型信心不足」的畫面。</li>
+              <li>整合到即時系統中，作為醫師教學或訓練的輔助工具。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Project overview -->
     <section id="project">
       <h2 class="section-title">專題介紹 Project Overview</h2>
@@ -419,7 +564,7 @@
           <p>
             本專題使用 40 段實際超音波影片，每段約 100 張影像，
             為每一 frame 標註針尖座標 (x, y)。接著定義一個固定的 ROI（醫師真正關注的區域），
-            並將座標轉換成 ROI 比例 (rx, ry)，限制在 [0, 1] 之間，讓模型比較不受機台解析度影響。
+            並將座標轉換成 ROI 比例 (rx, ry)，限制在 [0, 1] 之間，讓模型較不受機台解析度影響。
           </p>
           <p>
             模型部分採用 3D R(2+1)D-18，輸入為 clip 長度 N 的連續影像，
@@ -657,6 +802,7 @@ def infer_clip(clip_tensor: torch.Tensor, model: torch.nn.Module):
   </footer>
 
   <script>
+    // 平滑捲動
     function scrollToSection(id) {
       const el = document.getElementById(id);
       if (!el) return;
@@ -664,6 +810,7 @@ def infer_clip(clip_tensor: torch.Tensor, model: torch.nn.Module):
       window.scrollTo({ top, behavior: "smooth" });
     }
 
+    // 手機選單
     const menuToggle = document.getElementById("menuToggle");
     const navList = document.getElementById("navList");
     if (menuToggle && navList) {
@@ -677,8 +824,31 @@ def infer_clip(clip_tensor: torch.Tensor, model: torch.nn.Module):
       });
     }
 
+    // 生醫互動專區
+    const bioButtons = document.querySelectorAll(".bio-button[data-bio-target]");
+    const bioPanels = document.querySelectorAll(".bio-topic-panel");
+
+    if (bioButtons.length && bioPanels.length) {
+      bioButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("data-bio-target");
+
+          bioButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          bioPanels.forEach((panel) => {
+            if (panel.id === targetId) {
+              panel.classList.add("active");
+            } else {
+              panel.classList.remove("active");
+            }
+          });
+        });
+      });
+    }
+
+    // 年份
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
-
