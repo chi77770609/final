@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>我的個人網站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* 基本設定 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #f5f5f7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 頂部導覽列 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e5ea;
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+
+    nav li a {
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      transition: background 0.2s;
+    }
+
+    nav li a:hover {
+      background: #e5e5ea;
+    }
+
+    /* 手機版選單按鈕 */
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* 主內容框架 */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 3rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-left: 4px solid #007aff;
+      padding-left: 0.6rem;
+    }
+
+    /* 首頁 Hero 區塊 */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .btn-primary {
+      background: #007aff;
+      color: white;
+      box-shadow: 0 8px 16px rgba(0, 122, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #0062cc;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(0, 122, 255, 0.45);
+    }
+
+    .btn-secondary {
+      background: #f2f2f7;
+      color: #222;
+    }
+
+    .btn-secondary:hover {
+      background: #e5e5ea;
+      transform: translateY(-1px);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      background: #e5f2ff;
+      color: #004b9a;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1.3rem;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e5e5ea;
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+
+    .hero-item-label {
+      font-size: 0.75rem;
+      color: #888;
+    }
+
+    .hero-item-value {
+      font-weight: 600;
+    }
+
+    /* 關於我 */
+    .about-text {
+      background: white;
+      padding: 1.2rem 1.3rem;
+      border-radius: 1rem;
+      border: 1px solid #e5e5ea;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+      font-size: 0.95rem;
+    }
+
+    .about-text p + p {
+      margin-top: 0.8rem;
+    }
+
+    /* 卡片共用樣式 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid #e5e5ea;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.05);
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: #555;
+      background: #f2f2f7;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-footer {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    /* 聯絡區塊 */
+    .contact-box {
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 1.2rem;
+      padding: 1.4rem 1.3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .contact-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-sub {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .contact-info span {
+      opacity: 0.85;
+    }
+
+    .contact-pill {
+      display: inline-block;
+      margin-top: 0.6rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 250, 251, 0.3);
+      font-size: 0.75rem;
+      color: #e5e7eb;
+    }
+
+    /* 頁尾 */
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #999;
+      padding: 1rem 0 1.5rem;
+    }
+
+    /* 響應式：平板 & 手機 */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-box {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      nav ul {
+        position: absolute;
+        right: 1.2rem;
+        top: 3.1rem;
+        flex-direction: column;
+        background: white;
+        padding: 0.7rem 0.8rem;
+        border-radius: 0.8rem;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        display: none;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 導覽列 -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">My Website</div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="開啟選單">☰</button>
+
+      <nav>
+        <ul id="navList">
+          <li><a href="#hero">首頁</a></li>
+          <li><a href="#about">關於我</a></li>
+          <li><a href="#projects">作品</a></li>
+          <li><a href="#contact">聯絡</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 主內容 -->
+  <main>
+    <!-- Hero 區塊 -->
+    <section id="hero" class="hero">
+      <div>
+        <div class="hero-tag">✨ 歡迎來到我的小天地</div>
+        <h1 class="hero-title">嗨，我是 XXX</h1>
+        <p class="hero-subtitle">
+          這裡是我的個人網站，你可以看到我的簡介、作品與聯絡方式。
+          （如果是課堂報告，可以把內容改成介紹「淡水英國領事館官邸」之類的主題）
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="scrollToSection('projects')">
+            查看作品
+          </button>
+          <button class="btn-secondary" onclick="scrollToSection('contact')">
+            聯絡我
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div>
+          <div class="hero-item-label">目前身分</div>
+          <div class="hero-item-value">學生 / 開發者 / 研究者（可自行修改）</div>
+        </div>
+
+        <div class="hero-grid">
+          <div>
+            <div class="hero-item-label">興趣領域</div>
+            <div class="hero-item-value">AI、程式設計、影像處理</div>
+          </div>
+          <div>
+            <div class="hero-item-label">擅長工具</div>
+            <div class="hero-item-value">Python, MATLAB, Verilog</div>
+          </div>
+          <div>
+            <div class="hero-item-label">目前專題</div>
+            <div class="hero-item-value">醫療影像針尖偵測</div>
+          </div>
+          <div>
+            <div class="hero-item-label">所在地</div>
+            <div class="hero-item-value">台灣（可修改）</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 關於我 -->
+    <section id="about">
+      <h2 class="section-title">關於我</h2>
+      <div class="about-text">
+        <p>
+          在這裡寫一段自我介紹，例如：我目前就讀於 XXX 系，平常喜歡研究
+          AI、電子電路與各種有趣的 side project。
+        </p>
+        <p>
+          你也可以改成介紹一個主題，比如「淡水英國領事館官邸」的歷史背景、
+          建築特色、在台灣發展中的角色等等。
+        </p>
+        <p>
+          這一段文字完全可以照作業需求去改：想做成報告型網站、個人履歷網站、
+          專題展示頁，都可以。
+        </p>
+      </div>
+    </section>
+
+    <!-- 作品 / 內容展示 -->
+    <section id="projects">
+      <h2 class="section-title">作品 / 專題展示</h2>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-tag">專題 Project</div>
+          <h3 class="card-title">醫療 AI：針尖偵測</h3>
+          <p>
+            使用深度學習模型偵測超音波影像中的針尖位置，搭配 K-fold
+            訓練與 ROI 設計，提高偵測準確率。
+          </p>
+          <div class="card-footer">技術：Python, PyTorch, 影像處理</div>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">課堂作業</div>
+          <h3 class="card-title">FPGA 小遊戲</h3>
+          <p>
+            以 Verilog 實作雙人遊戲，包含隨機數產生、碰撞判定與七段顯示器分數顯示。
+          </p>
+          <div class="card-footer">技術：FPGA, Verilog, 數位電路</div>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">可以改成景點介紹</div>
+          <h3 class="card-title">淡水英國領事館官邸介紹</h3>
+          <p>
+            這裡可以改成：地理位置、歷史背景、建築風格、推薦參觀動線等等，
+            做成一個小型導覽網站內容。
+          </p>
+          <div class="card-footer">類型：景點導覽 / 期末報告</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 聯絡我 -->
+    <section id="contact">
+      <h2 class="section-title">聯絡我</h2>
+      <div class="contact-box">
+        <div>
+          <div class="contact-title">有興趣合作或想聊天嗎？</div>
+          <div class="contact-sub">
+            如果你是老師、同學或對專題有興趣的人，都可以透過下方方式聯絡我。
+          </div>
+          <span class="contact-pill">你也可以把這一區改成「參觀資訊」、「交通方式」</span>
+        </div>
+
+        <div class="contact-info">
+          <span>📧 Email：yourmail@example.com</span>
+          <span>📱 Line / IG：@your_id</span>
+          <span>📍 地點：台北市（可修改）</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer>
+    © <span id="year"></span> My Website. All rights reserved.
+  </footer>
+
+  <script>
+    // 移動到指定區塊的平滑捲動
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      window.scrollTo({
+        top: el.offsetTop - 60,
+        behavior: "smooth",
+      });
+    }
+
+    // 導覽列手機版選單開關
+    const menuToggle = document.getElementById("menuToggle");
+    const navList = document.getElementById("navList");
+
+    if (menuToggle && navList) {
+      menuToggle.addEventListener("click", () => {
+        navList.classList.toggle("show");
+      });
+
+      // 點選選單項目後自動關閉（手機）
+      navList.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navList.classList.remove("show");
+        });
+      });
+    }
+
+    // 自動更新年份
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
