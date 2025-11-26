@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>超音波針尖偵測生醫 AI 專題 | NTUST</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="國立臺灣科技大學生醫 AI 專題：以 3D CNN 與 ROI 設計實作超音波引導針尖偵測，展示方法介紹、互動介紹、Demo 影片、程式碼與實驗結果。" />
+  <meta name="description" content="國立臺灣科技大學生醫 AI 專題：以 3D CNN 與 ROI 設計實作超音波引導針尖偵測，展示互動介紹、原始與成果影片、程式檔下載與實驗結果。" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -212,6 +212,7 @@
     .card-title { font-size: 0.95rem; font-weight: 600; }
     .card-footer { margin-top: 0.4rem; font-size: 0.78rem; color: #9ca3af; }
 
+    /* Demo videos */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -233,6 +234,44 @@
       margin-top: 0.4rem;
       font-size: 0.8rem;
       color: #9ca3af;
+    }
+
+    /* Demo tabs (互動) */
+    .demo-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .demo-tab {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: transparent;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease,
+                  box-shadow 0.15s ease, transform 0.1s ease,
+                  border-color 0.15s ease;
+      white-space: nowrap;
+    }
+    .demo-tab:hover {
+      background: rgba(15, 23, 42, 0.9);
+      transform: translateY(-1px);
+    }
+    .demo-tab.active {
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      border-color: transparent;
+      color: #f9fafb;
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.6);
+    }
+    .demo-panel { display: none; }
+    .demo-panel.active { display: block; }
+    .demo-side-by-side {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
     }
 
     /* Code */
@@ -259,6 +298,48 @@
       border: 1px solid rgba(148, 163, 184, 0.7);
       font-size: 0.75rem;
     }
+    .code-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .code-tab {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: transparent;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease,
+                  box-shadow 0.15s ease, transform 0.1s ease,
+                  border-color 0.15s ease;
+      white-space: nowrap;
+    }
+    .code-tab:hover {
+      background: rgba(15, 23, 42, 0.9);
+      transform: translateY(-1px);
+    }
+    .code-tab.active {
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      border-color: transparent;
+      color: #f9fafb;
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.6);
+    }
+    .code-panel { display: none; }
+    .code-panel.active { display: block; }
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
     .result-list {
       font-size: 0.88rem;
       list-style: none;
@@ -364,6 +445,7 @@
       .grid-2 { grid-template-columns: minmax(0, 1fr); }
       .card-grid { grid-template-columns: minmax(0, 1fr); }
       .video-grid { grid-template-columns: minmax(0, 1fr); }
+      .demo-side-by-side { grid-template-columns: minmax(0, 1fr); }
       .contact-grid { grid-template-columns: minmax(0, 1fr); }
     }
     @media (max-width: 720px) {
@@ -397,8 +479,8 @@
           <li><a href="#hero">首頁</a></li>
           <li><a href="#bio">生醫互動</a></li>
           <li><a href="#project">專題介紹</a></li>
-          <li><a href="#demo">Demo 影片</a></li>
-          <li><a href="#code">程式碼</a></li>
+          <li><a href="#demo">成果影片</a></li>
+          <li><a href="#code">程式檔</a></li>
           <li><a href="#results">結果</a></li>
           <li><a href="#about">關於我</a></li>
         </ul>
@@ -424,8 +506,8 @@
         </p>
 
         <div class="hero-buttons">
-          <button class="btn-primary" onclick="scrollToSection('demo')">▶ 觀看 Demo 影片</button>
-          <button class="btn-secondary" onclick="scrollToSection('code')">&lt;/&gt; 查看程式碼</button>
+          <button class="btn-primary" onclick="scrollToSection('demo')">▶ 直接看成果影片</button>
+          <button class="btn-secondary" onclick="scrollToSection('code')">&lt;/&gt; 查看程式檔與下載</button>
         </div>
 
         <div class="hero-meta">
@@ -614,113 +696,153 @@
       </div>
     </section>
 
-    <!-- Demo videos -->
+    <!-- Demo videos (互動) -->
     <section id="demo">
-      <h2 class="section-title">Demo 影片 Demonstration</h2>
+      <h2 class="section-title">成果影片 Demo</h2>
       <p class="muted" style="margin-bottom: 0.8rem;">
-        🔧 使用方式：請在專案資料夾中建立 <code>videos/</code> 資料夾，
-        將自己的 mp4 影片放入，並依照下方 <code>src</code> 檔名修改。
+        💡 說明：<strong>needle1.avi</strong> 為原始超音波影片，<strong>f2.avi</strong> 為模型推論後畫上紅點的成果影片。
+        下面可以用按鈕切換不同觀看方式。
       </p>
 
-      <div class="video-grid">
-        <article class="video-card">
-          <h3>Demo 1：針尖軌跡疊加在超音波影像上</h3>
-          <video controls preload="metadata" src="videos/demo_tracking.mp4">
-            你的瀏覽器不支援 HTML5 影片。
-          </video>
-          <p class="video-caption">
-            展示模型預測的針尖座標如何以紅點疊加在超音波影像上，
-            並隨時間跟著針的移動而變化。
-          </p>
-        </article>
+      <div class="demo-tabs">
+        <button class="demo-tab active" data-demo-target="demo-original">
+          原始影片（needle1.avi）
+        </button>
+        <button class="demo-tab" data-demo-target="demo-result">
+          偵測結果（f2.avi）
+        </button>
+        <button class="demo-tab" data-demo-target="demo-both">
+          原始 vs 結果（左右比較）
+        </button>
+      </div>
 
+      <!-- Panel：原始影片 -->
+      <div class="demo-panel active" id="demo-original">
         <article class="video-card">
-          <h3>Demo 2：原始輸出 vs 線性修正後軌跡</h3>
-          <video controls preload="metadata" src="videos/demo_compare.mp4">
+          <h3>原始超音波影片：needle1.avi</h3>
+          <video controls preload="metadata" src="needle1.avi">
             你的瀏覽器不支援 HTML5 影片。
           </video>
           <p class="video-caption">
-            左側為模型直接輸出的座標，右側為經過線性「b 方法」修正後的軌跡，
-            可以明顯看到抖動被抑制、路徑更加平滑。
+            這是未加任何標記的原始超音波影像，可用來觀察針尖在高雜訊背景下其實並不容易辨識。
           </p>
         </article>
       </div>
+
+      <!-- Panel：結果影片 -->
+      <div class="demo-panel" id="demo-result">
+        <article class="video-card">
+          <h3>模型偵測結果：f2.avi</h3>
+          <video controls preload="metadata" src="f2.avi">
+            你的瀏覽器不支援 HTML5 影片。
+          </video>
+          <p class="video-caption">
+            每一幀的針尖位置由模型預測，並以紅點標示，搭配 ROI 設計與線性修正後，
+            可以看到針尖軌跡更連續、抖動被抑制。
+          </p>
+        </article>
+      </div>
+
+      <!-- Panel：左右比較 -->
+      <div class="demo-panel" id="demo-both">
+        <div class="demo-side-by-side">
+          <article class="video-card">
+            <h3>原始：needle1.avi</h3>
+            <video controls preload="metadata" src="needle1.avi">
+              你的瀏覽器不支援 HTML5 影片。
+            </video>
+          </article>
+          <article class="video-card">
+            <h3>結果：f2.avi</h3>
+            <video controls preload="metadata" src="f2.avi">
+              你的瀏覽器不支援 HTML5 影片。
+            </video>
+          </article>
+        </div>
+        <p class="video-caption" style="margin-top: 0.6rem;">
+          左右對照可以更直觀地看到：模型輸出的針尖紅點如何跟著真實針尖移動，
+          以及線性修正後軌跡的穩定程度。
+        </p>
+      </div>
     </section>
 
-    <!-- Code -->
+    <!-- Code / 程式檔 -->
     <section id="code">
-      <h2 class="section-title">程式碼 Code</h2>
+      <h2 class="section-title">程式檔 Code & Download</h2>
 
       <div class="grid-2">
         <article class="text-card">
-          <p>專題的程式主架構大致分成兩部份：</p>
+          <p>本專題主要程式分成兩支檔案：</p>
           <ul class="result-list">
             <li>
-              <strong>1. 3D CNN 推論腳本（infer_r2plus1d_fix.py）</strong>：  
-              讀取超音波影片，切成多個 clip 輸入模型，輸出 ROI 比例 (rx, ry)，再轉回原始像素座標。
+              <strong>cnn.py</strong>：  
+              3D CNN（R(2+1)D-18）訓練主程式，包含 K-fold、ROI 座標轉換與 pixel loss 等邏輯。
             </li>
             <li>
-              <strong>2. 線性修正腳本（b 方法）</strong>：  
-              對每段影片的座標做線性迴歸，偵測偏離過大的點並依公式修正，輸出更穩定的軌跡。
+              <strong>infer.py</strong>：  
+              讀取訓練好的權重，對輸入影片做推論，並在影像上畫出針尖紅點輸出為成果影片。
             </li>
           </ul>
           <p style="margin-top: 0.7rem;">
-            下方是簡化版推論函式的程式碼片段，實際專題中還會包含前處理、
-            K-fold 評估與結果視覺化等模組。
+            下方可以用按鈕切換查看不同程式檔的說明與下載連結。
           </p>
         </article>
 
         <article>
           <div class="code-header">
             <span class="code-label">Python · PyTorch</span>
-            <span>infer_r2plus1d_fix.py（節錄範例）</span>
+            <span>互動程式檔選擇</span>
           </div>
-          <pre><code>
-import torch
-from cnn_gpu_res18_fix import R2Plus1D18  # 模型定義檔
 
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+          <div class="code-tabs">
+            <button class="code-tab active" data-code-target="code-cnn">
+              CNN 主程式（cnn.py）
+            </button>
+            <button class="code-tab" data-code-target="code-infer">
+              推論腳本（infer.py）
+            </button>
+          </div>
 
-ROI_L, ROI_T = 604, 108
-ROI_R, ROI_B = 981, 855
-ROI_W, ROI_H = ROI_R - ROI_L, ROI_B - ROI_T
+          <!-- Panel：cnn.py -->
+          <div class="code-panel active" id="code-cnn">
+            <a class="download-link" href="cnn.py" download>
+              ⬇ 下載 cnn.py
+            </a>
+            <p class="muted" style="margin-top: 0.3rem;">
+              提示：在 GitHub 看到這個連結時，可以直接點開程式碼閱讀，
+              右上角按「Download raw file」或用瀏覽器右鍵另存即可。
+            </p>
+            <pre><code># cnn.py（節錄概念示意）
+# - 讀取 videos/ 與 coords/ 中的資料
+# - 把超音波影片做 letterbox 前處理
+# - 以 R(2+1)D-18 模型訓練 ROI 比例座標 (rx, ry)
+# - 將 ROI 比例轉回原始像素，使用 L1 / MAE loss 訓練
 
-@torch.no_grad()
-def infer_clip(clip_tensor: torch.Tensor, model: torch.nn.Module):
-    """
-    clip_tensor: (1, C, T, H, W)  已完成前處理的影像 clip
-    回傳：原始影像座標 (x, y)
-    """
-    model.eval()
-    clip_tensor = clip_tensor.to(DEVICE)
+# 使用方式：
+#   python cnn.py                 # K-fold 訓練
+#   python cnn.py infer in out    # 讀權重做推論，輸出畫紅點影片</code></pre>
+          </div>
 
-    rx, ry = model(clip_tensor)[0]  # 網路輸出 ROI 比例座標
-    rx = torch.clamp(rx, 0.0, 1.0).item()
-    ry = torch.clamp(ry, 0.0, 1.0).item()
+          <!-- Panel：infer.py -->
+          <div class="code-panel" id="code-infer">
+            <a class="download-link" href="infer.py" download>
+              ⬇ 下載 infer.py
+            </a>
+            <p class="muted" style="margin-top: 0.3rem;">
+              提示：此腳本專門負責推論與畫紅點，你可以在命令列指定輸入影片
+              （例如 needle1.avi）與輸出成果檔名（例如 f2.avi）。
+            </p>
+            <pre><code># infer.py（節錄概念示意）
+# - 載入指定 fold 的 best 權重
+# - 將輸入影片逐幀 letterbox + 正規化
+# - 以 3D CNN 推論 ROI 比例座標
+# - 反投影回原始畫面後，以紅點畫出針尖位置並輸出影片
 
-    x = ROI_L + rx * ROI_W
-    y = ROI_T + ry * ROI_H
-    return float(x), float(y)
-          </code></pre>
+# 使用方式範例：
+#   python infer.py infer_f0 needle1.avi f2.avi
+#   python infer.py infer_fold 2 needle1.avi f2.avi --show-roi</code></pre>
+          </div>
         </article>
-      </div>
-
-      <div style="margin-top: 1.2rem;" class="text-card">
-        <div class="code-header">
-          <span class="code-label">GitHub Repository</span>
-          <span>（把這裡網址改成你自己的）</span>
-        </div>
-        <p>
-          🔗 專題完整程式碼與訓練腳本：  
-          <!-- TODO：這裡改成你真實的 repo 連結 -->
-          <a href="https://github.com/chi77770609/needle-tip-biomed-ai"
-             target="_blank" rel="noopener noreferrer">
-            https://github.com/chi77770609/needle-tip-biomed-ai
-          </a>
-        </p>
-        <p class="muted" style="margin-top: 0.4rem;">
-          （上方連結目前是範例，可改成實際 GitHub 專案、雲端硬碟或 OSF 連結。）
-        </p>
       </div>
     </section>
 
@@ -827,21 +949,49 @@ def infer_clip(clip_tensor: torch.Tensor, model: torch.nn.Module):
     // 生醫互動專區
     const bioButtons = document.querySelectorAll(".bio-button[data-bio-target]");
     const bioPanels = document.querySelectorAll(".bio-topic-panel");
-
     if (bioButtons.length && bioPanels.length) {
       bioButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
           const targetId = btn.getAttribute("data-bio-target");
-
           bioButtons.forEach((b) => b.classList.remove("active"));
           btn.classList.add("active");
-
           bioPanels.forEach((panel) => {
-            if (panel.id === targetId) {
-              panel.classList.add("active");
-            } else {
-              panel.classList.remove("active");
-            }
+            if (panel.id === targetId) panel.classList.add("active");
+            else panel.classList.remove("active");
+          });
+        });
+      });
+    }
+
+    // Demo 影片互動切換
+    const demoTabs = document.querySelectorAll(".demo-tab[data-demo-target]");
+    const demoPanels = document.querySelectorAll(".demo-panel");
+    if (demoTabs.length && demoPanels.length) {
+      demoTabs.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("data-demo-target");
+          demoTabs.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          demoPanels.forEach((panel) => {
+            if (panel.id === targetId) panel.classList.add("active");
+            else panel.classList.remove("active");
+          });
+        });
+      });
+    }
+
+    // 程式檔互動切換
+    const codeTabs = document.querySelectorAll(".code-tab[data-code-target]");
+    const codePanels = document.querySelectorAll(".code-panel");
+    if (codeTabs.length && codePanels.length) {
+      codeTabs.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("data-code-target");
+          codeTabs.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          codePanels.forEach((panel) => {
+            if (panel.id === targetId) panel.classList.add("active");
+            else panel.classList.remove("active");
           });
         });
       });
