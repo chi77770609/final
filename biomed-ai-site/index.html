@@ -2,43 +2,48 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <title>超音波針尖偵測生醫 AI 專題 | NTUST</title>
+  <title>Biomedical AI Needle Tip | NTUST</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="國立臺灣科技大學生醫 AI 專題：以 3D CNN 與 ROI 設計實作超音波引導針尖偵測，展示互動介紹、原始與成果影片、程式檔下載與實驗結果。" />
+  <meta name="description" content="NTUST Biomedical AI project: ultrasound needle tip detection with 3D CNN and visual demos." />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f172a;
+      background: #020617;
       color: #e5e7eb;
       line-height: 1.6;
     }
     a { color: inherit; text-decoration: none; }
     img, video { max-width: 100%; display: block; }
 
-    /* Header */
     header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(15, 23, 42, 0.9);
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(15, 23, 42, 0.92);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
     }
     .nav-container {
-      max-width: 1100px; margin: 0 auto;
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 0.7rem 1.2rem;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .logo {
-      font-weight: 700; font-size: 1.05rem;
-      letter-spacing: 0.08em; text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
     }
     nav ul {
       list-style: none;
-      display: flex; gap: 1rem;
+      display: flex;
+      gap: 1rem;
       font-size: 0.9rem;
     }
     nav li a {
-      padding: 0.35rem 0.6rem;
+      padding: 0.3rem 0.7rem;
       border-radius: 999px;
       transition: background 0.15s ease, color 0.15s ease;
     }
@@ -48,25 +53,32 @@
     }
     .menu-toggle {
       display: none;
-      border: none; background: none;
-      color: #e5e7eb; font-size: 1.4rem; cursor: pointer;
+      border: none;
+      background: none;
+      color: #e5e7eb;
+      font-size: 1.4rem;
+      cursor: pointer;
     }
 
-    /* Layout */
     main {
       max-width: 1100px;
       margin: 0 auto;
       padding: 1.8rem 1.2rem 3rem;
     }
-    section { margin-bottom: 3.2rem; }
+    section { margin-bottom: 3rem; }
     .section-title {
-      font-size: 1.4rem; font-weight: 700;
+      font-size: 1.3rem;
+      font-weight: 700;
       margin-bottom: 1rem;
-      display: inline-flex; align-items: center; gap: 0.6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .section-title::before {
-      content: ""; display: inline-block;
-      width: 18px; height: 2px; border-radius: 999px;
+      content: "";
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
       background: linear-gradient(90deg, #38bdf8, #a855f7);
     }
     .muted { color: #9ca3af; font-size: 0.9rem; }
@@ -75,153 +87,179 @@
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
-      gap: 2.4rem; align-items: center;
-      margin-top: 1.2rem;
+      gap: 2rem;
+      align-items: center;
+      margin-top: 1rem;
     }
     .hero-tag {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.8rem; padding: 0.2rem 0.65rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: #e5e7eb;
-      margin-bottom: 0.9rem;
-    }
-    .hero-title {
-      font-size: 2.1rem; font-weight: 800;
+      border: 1px solid rgba(148, 163, 184, 0.8);
       margin-bottom: 0.8rem;
     }
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
     .hero-subtitle {
-      font-size: 0.98rem;
+      font-size: 0.97rem;
       color: #cbd5f5;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
     .hero-buttons {
-      display: flex; flex-wrap: wrap;
-      gap: 0.8rem; margin-bottom: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
     }
     .btn-primary, .btn-secondary {
       padding: 0.55rem 1.2rem;
-      border-radius: 999px; border: none;
-      font-size: 0.9rem; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      transition: transform 0.1s, box-shadow 0.1s,
-                  background 0.15s, border-color 0.15s;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
       white-space: nowrap;
     }
     .btn-primary {
       background: linear-gradient(135deg, #38bdf8, #6366f1);
       color: #f9fafb;
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.6);
     }
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(37, 99, 235, 0.6);
-    }
+    .btn-primary:hover { transform: translateY(-1px); }
     .btn-secondary {
       background: transparent;
       color: #e5e7eb;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.8);
     }
     .btn-secondary:hover {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.95);
       transform: translateY(-1px);
     }
     .hero-meta {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
+      gap: 0.7rem;
       font-size: 0.8rem;
-      color: #9ca3af;
     }
     .hero-meta-item span:first-child {
-      font-size: 0.75rem;
-      text-transform: uppercase;
+      font-size: 0.7rem;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9ca3af;
     }
     .hero-meta-item span:last-child {
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       color: #e5e7eb;
       font-weight: 600;
     }
+
     .hero-card {
-      background: radial-gradient(circle at top left, #1e293b, #020617);
-      border-radius: 1.4rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border-radius: 1.2rem;
       padding: 1.3rem 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at top left, #1e293b, #020617);
       box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
       font-size: 0.9rem;
-      display: grid; gap: 0.9rem;
+      display: grid;
+      gap: 0.9rem;
     }
-    .hero-card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .hero-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
     .hero-badges {
-      display: flex; flex-wrap: wrap;
-      gap: 0.4rem; margin-top: 0.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
     }
     .badge {
       font-size: 0.75rem;
-      padding: 0.18rem 0.55rem;
+      padding: 0.15rem 0.55rem;
       border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
       background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.6);
     }
 
-    .text-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 1rem;
-      padding: 1.2rem 1.3rem;
+    /* Flow diagram */
+    .flow-wrapper {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 1.1rem;
       border: 1px solid rgba(148, 163, 184, 0.6);
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.7);
-      font-size: 0.95rem; color: #e5e7eb;
+      padding: 1.2rem 1.3rem 1.4rem;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.8);
     }
-    .text-card p + p { margin-top: 0.7rem; }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
-      gap: 1.5rem;
-    }
-    .chip-row {
-      display: flex; flex-wrap: wrap;
-      gap: 0.4rem; margin-top: 0.6rem;
-      font-size: 0.8rem;
-    }
-    .chip {
-      padding: 0.18rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.7);
-    }
-    .card-grid {
+    .flow-steps {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
+      margin-bottom: 0.8rem;
     }
-    .card {
-      background: rgba(15, 23, 42, 0.95);
+    .flow-item {
+      position: relative;
+      background: #020617;
       border-radius: 0.9rem;
-      padding: 0.9rem 1rem;
+      padding: 0.9rem 0.8rem;
       border: 1px solid rgba(148, 163, 184, 0.6);
-      font-size: 0.88rem;
-      display: flex; flex-direction: column; gap: 0.35rem;
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.85rem;
     }
-    .card-tag {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
+    .flow-number {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.1rem;
+    }
+    .flow-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .flow-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+    }
+    .pill {
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+    .flow-arrow {
+      display: none;
+    }
+    .flow-caption {
+      font-size: 0.8rem;
       color: #9ca3af;
+      text-align: center;
     }
-    .card-title { font-size: 0.95rem; font-weight: 600; }
-    .card-footer { margin-top: 0.4rem; font-size: 0.78rem; color: #9ca3af; }
 
-    /* Demo videos */
+    /* Demo */
     .video-card {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.96);
       border-radius: 0.9rem;
       border: 1px solid rgba(148, 163, 184, 0.6);
       padding: 0.9rem;
       font-size: 0.86rem;
     }
     .video-card h3 {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       margin-bottom: 0.4rem;
       font-weight: 600;
     }
@@ -230,8 +268,6 @@
       font-size: 0.8rem;
       color: #9ca3af;
     }
-
-    /* Demo tabs (互動) */
     .demo-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -246,13 +282,11 @@
       color: #e5e7eb;
       font-size: 0.85rem;
       cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease,
-                  box-shadow 0.15s ease, transform 0.1s ease,
-                  border-color 0.15s ease;
+      transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
       white-space: nowrap;
     }
     .demo-tab:hover {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.95);
       transform: translateY(-1px);
     }
     .demo-tab.active {
@@ -270,22 +304,38 @@
     }
 
     /* Code */
-    pre {
-      background: #020617;
-      border-radius: 0.7rem;
-      padding: 0.8rem 0.9rem;
-      overflow-x: auto;
-      font-size: 0.8rem;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.3fr);
+      gap: 1.5rem;
     }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
+    .text-card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 1rem;
+      padding: 1.1rem 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.8);
+      font-size: 0.92rem;
     }
+    .text-list {
+      list-style: none;
+      display: grid;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+    }
+    .text-list li::before {
+      content: "• ";
+      color: #38bdf8;
+    }
+
     .code-header {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 0.4rem;
-      font-size: 0.8rem; color: #9ca3af;
+      font-size: 0.8rem;
+      color: #9ca3af;
     }
     .code-label {
       padding: 0.15rem 0.55rem;
@@ -297,23 +347,21 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.6rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem;
     }
     .code-tab {
-      padding: 0.4rem 0.9rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.7);
       background: transparent;
       color: #e5e7eb;
       font-size: 0.85rem;
       cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease,
-                  box-shadow 0.15s ease, transform 0.1s ease,
-                  border-color 0.15s ease;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
       white-space: nowrap;
     }
     .code-tab:hover {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.95);
       transform: translateY(-1px);
     }
     .code-tab.active {
@@ -324,29 +372,33 @@
     }
     .code-panel { display: none; }
     .code-panel.active { display: block; }
+    pre {
+      background: #020617;
+      border-radius: 0.7rem;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.78rem;
+      overflow-x: auto;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    }
     .download-link {
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
-      padding: 0.3rem 0.75rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.9);
       font-size: 0.85rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
-    .result-list {
-      font-size: 0.88rem;
-      list-style: none;
-      display: grid; gap: 0.25rem;
-      margin-top: 0.4rem;
-    }
-    .result-list li strong { color: #e5e7eb; }
-
-    /* About / contact */
+    /* About */
     .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
       gap: 1.4rem;
     }
     .contact-box {
@@ -361,97 +413,35 @@
       font-weight: 700;
       margin-bottom: 0.4rem;
     }
-    .contact-info { margin-top: 0.6rem; font-size: 0.88rem; }
+    .contact-info { margin-top: 0.5rem; font-size: 0.88rem; }
     .contact-info div { margin-bottom: 0.25rem; }
 
     footer {
       text-align: center;
-      font-size: 0.78rem; color: #6b7280;
+      font-size: 0.78rem;
+      color: #6b7280;
       padding: 0.8rem 0 1.4rem;
-    }
-
-    /* 生醫互動專區 */
-    .bio-selector {
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: 1rem;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      padding: 1rem 1.1rem;
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.7);
-      margin-bottom: 0.5rem;
-    }
-    .bio-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 0.9rem;
-    }
-    .bio-button {
-      padding: 0.4rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: transparent;
-      color: #e5e7eb;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease,
-                  box-shadow 0.15s ease, transform 0.1s ease,
-                  border-color 0.15s ease;
-      white-space: nowrap;
-    }
-    .bio-button:hover {
-      background: rgba(15, 23, 42, 0.9);
-      transform: translateY(-1px);
-    }
-    .bio-button.active {
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
-      border-color: transparent;
-      color: #f9fafb;
-      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.6);
-    }
-    .bio-panel-wrap {
-      border-radius: 0.8rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.9rem 1rem;
-      background: rgba(15, 23, 42, 0.9);
-      font-size: 0.9rem;
-    }
-    .bio-topic-panel {
-      display: none;
-      color: #e5e7eb;
-    }
-    .bio-topic-panel.active { display: block; }
-    .bio-topic-panel p + p { margin-top: 0.6rem; }
-    .bio-list {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 0.6rem;
-      display: grid;
-      gap: 0.25rem;
-      font-size: 0.9rem;
-    }
-    .bio-list li::before {
-      content: "• ";
-      color: #38bdf8;
     }
 
     /* RWD */
     @media (max-width: 900px) {
       .hero { grid-template-columns: minmax(0, 1fr); }
       .grid-2 { grid-template-columns: minmax(0, 1fr); }
-      .card-grid { grid-template-columns: minmax(0, 1fr); }
-      .demo-side-by-side { grid-template-columns: minmax(0, 1fr); }
       .contact-grid { grid-template-columns: minmax(0, 1fr); }
+      .demo-side-by-side { grid-template-columns: minmax(0, 1fr); }
+      .flow-steps { grid-template-columns: minmax(0, 1fr); }
     }
     @media (max-width: 720px) {
       nav ul {
         position: absolute;
-        right: 1.2rem; top: 3.1rem;
+        right: 1.2rem;
+        top: 3.1rem;
         flex-direction: column;
-        background: #020617;
         padding: 0.7rem 0.9rem;
+        background: #020617;
         border-radius: 0.8rem;
-        border: 1px solid rgba(148, 163, 184, 0.7);
-        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(148, 163, 184, 0.8);
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.8);
         display: none;
       }
       nav ul.show { display: flex; }
@@ -461,257 +451,137 @@
 </head>
 
 <body>
-  <!-- Header -->
   <header>
     <div class="nav-container">
-      <div class="logo">NTUST • Biomedical AI</div>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="開啟選單">☰</button>
-
+      <div class="logo">NTUST • BIOMEDICAL AI</div>
+      <button class="menu-toggle" id="menuToggle" aria-label="menu">☰</button>
       <nav>
         <ul id="navList">
           <li><a href="#hero">首頁</a></li>
-          <li><a href="#bio">生醫互動</a></li>
-          <li><a href="#project">專題介紹</a></li>
+          <li><a href="#flow">流程圖</a></li>
           <li><a href="#demo">成果影片</a></li>
           <li><a href="#code">程式檔</a></li>
-          <li><a href="#results">結果</a></li>
-          <li><a href="#about">關於我</a></li>
+          <li><a href="#about">關於</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Main -->
   <main>
-    <!-- Hero -->
+    <!-- HERO -->
     <section id="hero" class="hero">
       <div>
         <div class="hero-tag">
-          🩺 生醫 AI 專題
-          <span style="opacity: 0.8;">超音波引導針尖偵測</span>
+          🩺 Biomedical AI
+          <span style="opacity: .8;">Ultrasound Needle Tip</span>
         </div>
-
-        <h1 class="hero-title">超音波影像中的針尖偵測 Biomedical AI</h1>
+        <h1 class="hero-title">超音波針尖偵測&nbsp;·&nbsp;生醫 AI 專題</h1>
         <p class="hero-subtitle">
-          本專題以 40 段超音波影片為資料，結合 3D CNN（R(2+1)D-18）與 ROI 設計，
-          自動預測針尖在影像中的座標，並以線性修正方法穩定整段軌跡，
-          期望未來能協助臨床人員更直覺地掌握針尖位置。
+          以 3D CNN + ROI 設計，從超音波影片自動找出針尖位置，並輸出可視化軌跡。
         </p>
 
         <div class="hero-buttons">
-          <button class="btn-primary" onclick="scrollToSection('demo')">▶ 直接看成果影片</button>
-          <button class="btn-secondary" onclick="scrollToSection('code')">&lt;/&gt; 查看程式檔與下載</button>
+          <button class="btn-primary" onclick="scrollToSection('demo')">▶ 看成果影片</button>
+          <button class="btn-secondary" onclick="scrollToSection('code')">&lt;/&gt; 看程式檔</button>
         </div>
 
         <div class="hero-meta">
           <div class="hero-meta-item">
             <span>Project</span><br />
-            <span>超音波針尖偵測 Biomedical AI</span>
+            <span>Ultrasound Needle Tip Detection</span>
           </div>
           <div class="hero-meta-item">
             <span>Role</span><br />
-            <span>資料標註、模型訓練與後處理全程負責</span>
+            <span>Dataset · Model · Inference 全自操</span>
           </div>
           <div class="hero-meta-item">
-            <span>Tech</span><br />
-            <span>Python · PyTorch · R(2+1)D-18 · OpenCV</span>
+            <span>Model</span><br />
+            <span>3D R(2+1)D-18 · PyTorch</span>
           </div>
           <div class="hero-meta-item">
             <span>School</span><br />
-            <span>國立臺灣科技大學 電機系（指導教授：沈哲州）</span>
+            <span>NTUST EE • 指導：沈哲州</span>
           </div>
         </div>
       </div>
 
       <aside class="hero-card">
         <div>
-          <div class="hero-card-title">專題一眼看重點</div>
-          <p class="muted">
-            自建 40 段超音波資料集，將針尖座標標註後轉成 ROI 比例進行迴歸，
-            再搭配線性「b 方法」修正，讓針尖軌跡兼顧準確度與平滑度。
-          </p>
-        </div>
-        <div>
-          <div class="hero-card-title">關鍵字</div>
+          <div class="hero-card-title">專題關鍵字</div>
           <div class="hero-badges">
             <span class="badge">Ultrasound</span>
-            <span class="badge">Needle Tip Detection</span>
+            <span class="badge">Needle Tip</span>
             <span class="badge">3D CNN</span>
-            <span class="badge">R(2+1)D-18</span>
-            <span class="badge">ROI Regression</span>
-            <span class="badge">Trajectory Smoothing</span>
+            <span class="badge">ROI Reg.</span>
+            <span class="badge">Trajectory</span>
           </div>
+        </div>
+        <div>
+          <div class="hero-card-title">一張圖看專題內容</div>
+          <p class="muted">
+            下方用 3 個流程方塊，把「資料 → 模型 → 結果」一次整理。
+          </p>
         </div>
       </aside>
     </section>
 
-    <!-- 生醫 AI 互動專區 -->
-    <section id="bio">
-      <h2 class="section-title">生醫 AI 互動專區</h2>
+    <!-- FLOW DIAGRAM -->
+    <section id="flow">
+      <h2 class="section-title">模型流程圖</h2>
 
-      <div class="bio-selector">
-        <div class="bio-buttons">
-          <button class="bio-button active" data-bio-target="bio-needle">
-            針尖偵測專題總覽
-          </button>
-          <button class="bio-button" data-bio-target="bio-dataset">
-            資料集與標註方式
-          </button>
-          <button class="bio-button" data-bio-target="bio-model">
-            模型與訓練細節
-          </button>
-          <button class="bio-button" data-bio-target="bio-future">
-            未來延伸應用
-          </button>
-        </div>
-
-        <div class="bio-panel-wrap">
-          <!-- Panel 1 -->
-          <div class="bio-topic-panel active" id="bio-needle">
-            <p>
-              這個專題的核心目標是：在超音波影像中自動找出針尖位置，
-              協助醫師在神經阻斷、血管穿刺等侵入式操作中，即時判斷針尖是否在安全位置。
-            </p>
-            <ul class="bio-list">
-              <li>使用 40 段自行蒐集的超音波影片作為資料。</li>
-              <li>為每個 frame 標註針尖 (x, y) 座標，以 CSV 儲存。</li>
-              <li>透過 3D CNN + ROI 設計，輸出針尖軌跡並疊加在影像上。</li>
-              <li>搭配線性「b 方法」修正，使整段軌跡更平滑穩定。</li>
-            </ul>
+      <div class="flow-wrapper">
+        <div class="flow-steps">
+          <div class="flow-item">
+            <div class="flow-number">1</div>
+            <div class="flow-title">資料 & 標註</div>
+            <div class="flow-icons">
+              <span class="pill">40 段 ultrasound</span>
+              <span class="pill">每段約 100 frame</span>
+              <span class="pill">針尖 (x, y)</span>
+            </div>
           </div>
 
-          <!-- Panel 2 -->
-          <div class="bio-topic-panel" id="bio-dataset">
-            <p>
-              資料部分使用實際量測的超音波影像，每段影片約 100 張，
-              針尖位置由人工逐 frame 標註。為了讓模型專注在真正重要的畫面區域，
-              我定義一個固定 ROI，只在 ROI 內進行訓練與評估。
-            </p>
-            <ul class="bio-list">
-              <li>每段影片搭配一個 CSV 檔，內容為 frame index 與 (x, y) 座標。</li>
-              <li>將座標轉成 ROI 比例 (rx, ry)，統一尺度，介於 [0, 1]。</li>
-              <li>不在 ROI 內的點不計入 loss，降低背景雜訊影響。</li>
-              <li>未來可擴充更多病人與不同機台，提升模型泛化能力。</li>
-            </ul>
+          <div class="flow-item">
+            <div class="flow-number">2</div>
+            <div class="flow-title">3D CNN 模型</div>
+            <div class="flow-icons">
+              <span class="pill">R(2+1)D-18</span>
+              <span class="pill">ROI 比例 (rx, ry)</span>
+              <span class="pill">K-fold</span>
+            </div>
           </div>
 
-          <!-- Panel 3 -->
-          <div class="bio-topic-panel" id="bio-model">
-            <p>
-              模型選擇 3D R(2+1)D-18，是同時利用空間與時間資訊的卷積網路。
-              輸入為一小段連續的超音波影像 clip，輸出該 clip 中目標影格的 ROI 座標 (rx, ry)。
-            </p>
-            <ul class="bio-list">
-              <li>框架使用 PyTorch，支援 GPU 加速訓練與推論。</li>
-              <li>輸入尺寸為 224×224，clip 長度與 stride 可調整。</li>
-              <li>Loss 以預測座標還原成像素後，與標註座標做 L1 / MAE。</li>
-              <li>訓練過程使用 K-fold、學習率調整與早停策略控制收斂。</li>
-            </ul>
-          </div>
-
-          <!-- Panel 4 -->
-          <div class="bio-topic-panel" id="bio-future">
-            <p>
-              除了目前的針尖偵測，本專題流程也可以延伸到其他生醫影像任務，
-              例如導管尖端追蹤、病灶位置預測或術中導航輔助等。
-            </p>
-            <ul class="bio-list">
-              <li>與臨床端合作，蒐集更多實際案例與不同操作情境。</li>
-              <li>結合分割模型，標出重要器官或神經區域，提高安全性。</li>
-              <li>加入不確定度估計，讓系統能提示「模型信心不足」的畫面。</li>
-              <li>整合到即時系統中，作為醫師教學或訓練的輔助工具。</li>
-            </ul>
+          <div class="flow-item">
+            <div class="flow-number">3</div>
+            <div class="flow-title">輸出 & 修正</div>
+            <div class="flow-icons">
+              <span class="pill">紅點軌跡</span>
+              <span class="pill">線性 b 方法</span>
+              <span class="pill">成果影片</span>
+            </div>
           </div>
         </div>
+
+        <p class="flow-caption">
+          從原始超音波影片出發，經過標註、3D CNN 推論與線性修正，最後疊加紅點輸出影片。
+        </p>
       </div>
     </section>
 
-    <!-- Project overview -->
-    <section id="project">
-      <h2 class="section-title">專題介紹 Project Overview</h2>
-
-      <div class="grid-2">
-        <article class="text-card">
-          <p>
-            在許多侵入式醫療操作（例如神經阻斷、血管穿刺）中，醫師會依賴超音波影像來確認針尖位置。
-            但針尖在影像中通常只是一小點高亮訊號，加上雜訊與組織結構複雜，人工判讀容易疲勞且不穩定。
-          </p>
-          <p>
-            本專題使用 40 段實際超音波影片，每段約 100 張影像，
-            為每一 frame 標註針尖座標 (x, y)。接著定義一個固定的 ROI（醫師真正關注的區域），
-            並將座標轉換成 ROI 比例 (rx, ry)，限制在 [0, 1] 之間，讓模型較不受機台解析度影響。
-          </p>
-          <p>
-            模型部分採用 3D R(2+1)D-18，輸入為 clip 長度 N 的連續影像，
-            讓網路同時看見「空間 + 時間」變化；輸出為每個目標 frame 的 (rx, ry)。
-            推論後再把比例縮放回原始座標，並利用線性「b 方法」修正整段軌跡，
-            抑制抖動與不合理跳點。
-          </p>
-          <div class="chip-row">
-            <span class="chip">40 段超音波影片</span>
-            <span class="chip">每段約 100 frame</span>
-            <span class="chip">人工 (x, y) 針尖座標</span>
-            <span class="chip">ROI 座標正規化</span>
-          </div>
-        </article>
-
-        <div class="card-grid">
-          <article class="card">
-            <div class="card-tag">Dataset</div>
-            <div class="card-title">資料與標註</div>
-            <p>
-              自行整理 40 段 ultrasound 影片，並為每一張 frame 建立 CSV 座標檔。
-              訓練時只使用 ROI 內的標註點，避免背景區域干擾模型學習。
-            </p>
-            <div class="card-footer">Tools：OpenCV, NumPy, CSV 標註</div>
-          </article>
-
-          <article class="card">
-            <div class="card-tag">Model</div>
-            <div class="card-title">3D R(2+1)D-18</div>
-            <p>
-              採用 R(2+1)D-18 這類 3D CNN，輸入為多張連續影像 clip，
-              讓網路同時利用時間訊息來辨識針尖移動方向與速度。
-            </p>
-            <div class="card-footer">Framework：PyTorch</div>
-          </article>
-
-          <article class="card">
-            <div class="card-tag">Post-Process</div>
-            <div class="card-title">線性修正軌跡（b 方法）</div>
-            <p>
-              對每段影片的針尖軌跡做線性迴歸並找出代表路徑，
-              將偏離過大的點依照 X 差與線性方程式修正，使整體軌跡更符合實際插入/拔出的物理路徑。
-            </p>
-            <div class="card-footer">Method：Regression + Filtering</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Demo videos (互動) -->
+    <!-- DEMO -->
     <section id="demo">
       <h2 class="section-title">成果影片 Demo</h2>
-      <p class="muted" style="margin-bottom: 0.8rem;">
-        💡 說明：<strong>needle1.mp4</strong> 為原始超音波影片，
-        <strong>f2.mp4</strong> 為模型推論後畫上紅點的成果影片。
-        下面可以用按鈕切換不同觀看方式。
+      <p class="muted" style="margin-bottom: 0.7rem;">
+        needle1.mp4：原始超音波影片 · f2.mp4：模型偵測結果（含紅點）。
       </p>
 
       <div class="demo-tabs">
-        <button class="demo-tab active" data-demo-target="demo-original">
-          原始影片（needle1.mp4）
-        </button>
-        <button class="demo-tab" data-demo-target="demo-result">
-          偵測結果（f2.mp4）
-        </button>
-        <button class="demo-tab" data-demo-target="demo-both">
-          原始 vs 結果（左右比較）
-        </button>
+        <button class="demo-tab active" data-demo-target="demo-original">原始影片</button>
+        <button class="demo-tab" data-demo-target="demo-result">偵測結果</button>
+        <button class="demo-tab" data-demo-target="demo-both">左右比較</button>
       </div>
 
-      <!-- Panel：原始影片 -->
+      <!-- 原始 -->
       <div class="demo-panel active" id="demo-original">
         <article class="video-card">
           <h3>原始超音波影片：needle1.mp4</h3>
@@ -719,12 +589,12 @@
             你的瀏覽器不支援 HTML5 影片。
           </video>
           <p class="video-caption">
-            這是未加任何標記的原始超音波影像，可用來觀察針尖在高雜訊背景下其實並不容易辨識。
+            未加任何標記的影像，可看到針尖在雜訊中其實不容易辨識。
           </p>
         </article>
       </div>
 
-      <!-- Panel：結果影片 -->
+      <!-- 結果 -->
       <div class="demo-panel" id="demo-result">
         <article class="video-card">
           <h3>模型偵測結果：f2.mp4</h3>
@@ -732,54 +602,57 @@
             你的瀏覽器不支援 HTML5 影片。
           </video>
           <p class="video-caption">
-            每一幀的針尖位置由模型預測，並以紅點標示，搭配 ROI 設計與線性修正後，
-            可以看到針尖軌跡更連續、抖動被抑制。
+            模型為每一幀預測針尖座標，並以紅點標示，軌跡經線性 b 方法平滑化。
           </p>
         </article>
       </div>
 
-      <!-- Panel：左右比較 -->
+      <!-- 左右比較：用完整網址，確保能播 -->
       <div class="demo-panel" id="demo-both">
         <div class="demo-side-by-side">
           <article class="video-card">
             <h3>原始：needle1.mp4</h3>
-            <video controls preload="metadata" src="needle1.mp4" type="video/mp4">
+            <video
+              controls
+              preload="metadata"
+              src="https://chi77770609.github.io/final/biomed-ai-site/needle1.mp4"
+              type="video/mp4"
+            >
               你的瀏覽器不支援 HTML5 影片。
             </video>
           </article>
+
           <article class="video-card">
             <h3>結果：f2.mp4</h3>
-            <video controls preload="metadata" src="f2.mp4" type="video/mp4">
+            <video
+              controls
+              preload="metadata"
+              src="https://chi77770609.github.io/final/biomed-ai-site/f2.mp4"
+              type="video/mp4"
+            >
               你的瀏覽器不支援 HTML5 影片。
             </video>
           </article>
         </div>
         <p class="video-caption" style="margin-top: 0.6rem;">
-          左右對照可以更直觀地看到：模型輸出的針尖紅點如何跟著真實針尖移動，
-          以及線性修正後軌跡的穩定程度。
+          左右對照可以直接看到：紅點是否跟著真實針尖移動，與修正後軌跡的平滑程度。
         </p>
       </div>
     </section>
 
-    <!-- Code / 程式檔 -->
+    <!-- CODE -->
     <section id="code">
-      <h2 class="section-title">程式檔 Code & Download</h2>
+      <h2 class="section-title">程式檔 Code</h2>
 
       <div class="grid-2">
         <article class="text-card">
-          <p>本專題主要程式分成兩支檔案：</p>
-          <ul class="result-list">
-            <li>
-              <strong>cnn.py</strong>：  
-              3D CNN（R(2+1)D-18）訓練主程式，包含 K-fold、ROI 座標轉換與 pixel loss 等邏輯。
-            </li>
-            <li>
-              <strong>infer.py</strong>：  
-              讀取訓練好的權重，對輸入影片做推論，並在影像上畫出針尖紅點輸出為成果影片。
-            </li>
+          <p>整個專題主要靠兩支 Python：</p>
+          <ul class="text-list">
+            <li><strong>cnn.py</strong>：3D CNN 訓練主程式（K-fold + ROI + loss）。</li>
+            <li><strong>infer.py</strong>：讀權重 → 推論 → 畫紅點 → 輸出 f2.mp4。</li>
           </ul>
-          <p style="margin-top: 0.7rem;">
-            下方可以用按鈕切換查看不同程式檔的說明與下載連結。
+          <p style="margin-top: 0.6rem;">
+            下面用 Tab 切換檢視與下載，細節可以直接在 GitHub 上看完整原始碼。
           </p>
         </article>
 
@@ -790,209 +663,120 @@
           </div>
 
           <div class="code-tabs">
-            <button class="code-tab active" data-code-target="code-cnn">
-              CNN 主程式（cnn.py）
-            </button>
-            <button class="code-tab" data-code-target="code-infer">
-              推論腳本（infer.py）
-            </button>
+            <button class="code-tab active" data-code-target="code-cnn">cnn.py</button>
+            <button class="code-tab" data-code-target="code-infer">infer.py</button>
           </div>
 
-          <!-- Panel：cnn.py -->
+          <!-- cnn.py -->
           <div class="code-panel active" id="code-cnn">
-            <a class="download-link" href="cnn.py" download>
-              ⬇ 下載 cnn.py
-            </a>
-            <p class="muted" style="margin-top: 0.3rem;">
-              提示：在 GitHub 看到這個連結時，可以直接點開程式碼閱讀，
-              右上角按「Download raw file」或用瀏覽器右鍵另存即可。
-            </p>
-            <pre><code># cnn.py（節錄概念示意）
-# - 讀取 videos/ 與 coords/ 中的資料
-# - 把超音波影片做 letterbox 前處理
-# - 以 R(2+1)D-18 模型訓練 ROI 比例座標 (rx, ry)
-# - 將 ROI 比例轉回原始像素，使用 L1 / MAE loss 訓練
-
-# 使用方式：
-#   python cnn.py                 # K-fold 訓練
-#   python cnn.py infer in out    # 讀權重做推論，輸出畫紅點影片</code></pre>
+            <a class="download-link" href="cnn.py" download>⬇ 下載 cnn.py</a>
+            <pre><code># cnn.py 主要流程（摘要）
+# 1. 載入 40 段 ultrasound + CSV 標註
+# 2. 轉成 ROI 比例 (rx, ry)
+# 3. 建立 R(2+1)D-18 模型
+# 4. 以 K-fold 方式訓練
+# 5. 儲存 best model checkpoint</code></pre>
           </div>
 
-          <!-- Panel：infer.py -->
+          <!-- infer.py -->
           <div class="code-panel" id="code-infer">
-            <a class="download-link" href="infer.py" download>
-              ⬇ 下載 infer.py
-            </a>
-            <p class="muted" style="margin-top: 0.3rem;">
-              提示：此腳本專門負責推論與畫紅點，你可以在命令列指定輸入影片
-              （例如 needle1.mp4）與輸出成果檔名（例如 f2.mp4）。
-            </p>
-            <pre><code># infer.py（節錄概念示意）
-# - 載入指定 fold 的 best 權重
-# - 將輸入影片逐幀 letterbox + 正規化
-# - 以 3D CNN 推論 ROI 比例座標
-# - 反投影回原始畫面後，以紅點畫出針尖位置並輸出影片
-
-# 使用方式範例：
-#   python infer.py infer_f0 needle1.mp4 f2.mp4
-#   python infer.py infer_fold 2 needle1.mp4 f2.mp4 --show-roi</code></pre>
+            <a class="download-link" href="infer.py" download>⬇ 下載 infer.py</a>
+            <pre><code># infer.py 主要流程（摘要）
+# 1. 讀取訓練好的 checkpoint
+# 2. 將 needle1.mp4 切成 clips，做前處理
+# 3. 以 3D CNN 推論每幀針尖座標
+# 4. 使用線性 b 方法修正軌跡
+# 5. 在畫面上畫紅點，輸出 f2.mp4</code></pre>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Results -->
-    <section id="results">
-      <h2 class="section-title">實驗結果 Results</h2>
-
-      <div class="grid-2">
-        <article class="text-card">
-          <p>
-            在 40 段影片上使用 K-fold 交叉驗證評估模型效能，
-            指標包含針尖座標平均絕對誤差（MAE）以及誤差落在一定距離內的比例。
-          </p>
-          <ul class="result-list">
-            <li><strong>平均誤差（MAE）</strong>：X.xx pixels（可依實際結果更新）</li>
-            <li><strong>誤差 &lt; 5 px 比例</strong>：約 XX %</li>
-            <li><strong>線性修正後軌跡</strong>：抖動減少，插入/拔出階段更連續</li>
-          </ul>
-          <p style="margin-top: 0.6rem;">
-            若將結果輸出為疊加紅點的影片，可以很直觀地觀察不同病人、
-            不同角度與深度下的穩定度，也方便與臨床醫師討論模型表現。
-          </p>
-        </article>
-
-        <article class="text-card">
-          <p>這個區塊可以未來補上：</p>
-          <ul class="result-list">
-            <li>📊 各 fold 的誤差表格與標準差</li>
-            <li>📈 插入 vs 拔出階段的誤差比較圖</li>
-            <li>🖼️ 幾張代表性成功 / 困難案例的截圖說明</li>
-          </ul>
-          <p style="margin-top: 0.6rem;">
-            如果未來有投稿論文或參加競賽，也可以在這裡標註
-            acceptance、award 等資訊，讓這個頁面同時變成你的生醫 AI 履歷。
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- About & contact -->
+    <!-- ABOUT -->
     <section id="about">
-      <h2 class="section-title">關於我 & 聯絡方式</h2>
+      <h2 class="section-title">關於 Project & Me</h2>
 
       <div class="contact-grid">
         <article class="text-card">
           <p>
-            我目前就讀於國立臺灣科技大學電機相關科系，對 AI、醫學影像與硬體加速（GPU / FPGA）
-            都有濃厚興趣。超音波針尖偵測專題從資料整理、模型設計、訓練到後處理，
-            幾乎都是自己一步一步摸索完成。
+            這個網站是我在 NTUST 的生醫 AI 專題展示頁。重點是：
           </p>
-          <p>
-            透過這個專題，我體會到如何把論文上的想法真正落地成程式與可視化成果，
-            也更熟悉整個深度學習工作流程：資料前處理、模型訓練、評估與部署。
-          </p>
-          <p>
-            未來希望能在 IC 設計與 AI 應用領域持續深耕，將這些技術應用在醫療、工業或其他實際場域之中。
-          </p>
+          <ul class="text-list">
+            <li>使用真實超音波影像、自建資料集。</li>
+            <li>自己實作 3D CNN 模型、訓練與推論流程。</li>
+            <li>把結果做成影片方便給老師 / 醫師看。</li>
+          </ul>
         </article>
 
         <aside class="contact-box">
-          <h3>聯絡我 / 合作洽談</h3>
-          <p>
-            如果你是老師、同學、研究單位或公司，對這個專題或相關主題有興趣，
-            歡迎透過以下方式聯絡我。
-          </p>
+          <h3>Contact</h3>
+          <p>若對專題、程式或合作有興趣，歡迎聯絡我。</p>
           <div class="contact-info">
             <div>📧 Email：yourmail@example.com</div>
             <div>🔗 GitHub：github.com/chi77770609</div>
-            <div>📍 Location：Taipei, Taiwan</div>
+            <div>📍 Taipei · Taiwan</div>
           </div>
         </aside>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
-    © <span id="year"></span> Biomedical AI Needle Tip Project. All rights reserved.
+    © <span id="year"></span> Biomedical AI Needle Tip Project.
   </footer>
 
   <script>
-    // 平滑捲動
+    // smooth scroll
     function scrollToSection(id) {
       const el = document.getElementById(id);
       if (!el) return;
-      const top = el.offsetTop - 68;
+      const top = el.offsetTop - 72;
       window.scrollTo({ top, behavior: "smooth" });
     }
 
-    // 手機選單
+    // mobile nav
     const menuToggle = document.getElementById("menuToggle");
     const navList = document.getElementById("navList");
     if (menuToggle && navList) {
       menuToggle.addEventListener("click", () => {
         navList.classList.toggle("show");
       });
-      navList.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navList.classList.remove("show");
-        });
+      navList.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", () => navList.classList.remove("show"));
       });
     }
 
-    // 生醫互動專區
-    const bioButtons = document.querySelectorAll(".bio-button[data-bio-target]");
-    const bioPanels = document.querySelectorAll(".bio-topic-panel");
-    if (bioButtons.length && bioPanels.length) {
-      bioButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const targetId = btn.getAttribute("data-bio-target");
-          bioButtons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          bioPanels.forEach((panel) => {
-            if (panel.id === targetId) panel.classList.add("active");
-            else panel.classList.remove("active");
-          });
-        });
-      });
-    }
-
-    // Demo 影片互動切換
+    // demo tabs
     const demoTabs = document.querySelectorAll(".demo-tab[data-demo-target]");
     const demoPanels = document.querySelectorAll(".demo-panel");
-    if (demoTabs.length && demoPanels.length) {
-      demoTabs.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const targetId = btn.getAttribute("data-demo-target");
-          demoTabs.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          demoPanels.forEach((panel) => {
-            if (panel.id === targetId) panel.classList.add("active");
-            else panel.classList.remove("active");
-          });
+    demoTabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-demo-target");
+        demoTabs.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        demoPanels.forEach((p) => {
+          if (p.id === targetId) p.classList.add("active");
+          else p.classList.remove("active");
         });
       });
-    }
+    });
 
-    // 程式檔互動切換
+    // code tabs
     const codeTabs = document.querySelectorAll(".code-tab[data-code-target]");
     const codePanels = document.querySelectorAll(".code-panel");
-    if (codeTabs.length && codePanels.length) {
-      codeTabs.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const targetId = btn.getAttribute("data-code-target");
-          codeTabs.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          codePanels.forEach((panel) => {
-            if (panel.id === targetId) panel.classList.add("active");
-            else panel.classList.remove("active");
-          });
+    codeTabs.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-code-target");
+        codeTabs.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        codePanels.forEach((p) => {
+          if (p.id === targetId) p.classList.add("active");
+          else p.classList.remove("active");
         });
       });
-    }
+    });
 
-    // 年份
+    // year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
