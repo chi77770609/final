@@ -83,39 +83,90 @@
     }
     .muted { color: #9ca3af; font-size: 0.9rem; }
 
-    /* Hero */
+    /* HERO（頂部醫學感背景） */
     .hero {
+      position: relative;
+      margin-top: 1.1rem;
+      margin-bottom: 2.2rem;
       display: grid;
       grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
       gap: 2rem;
       align-items: center;
-      margin-top: 1rem;
+      padding: 1.7rem 1.7rem 1.9rem;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.35), transparent 55%),
+        radial-gradient(circle at 100% 20%, rgba(94, 234, 212, 0.23), transparent 60%),
+        radial-gradient(circle at 80% 100%, rgba(129, 140, 248, 0.3), transparent 55%),
+        #020617;
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.9);
     }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background-image:
+        linear-gradient(120deg, rgba(148, 163, 184, 0.09) 1px, transparent 1px),
+        linear-gradient(210deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .hero::after {
+      /* 簡單心電圖線條 */
+      content: "";
+      position: absolute;
+      left: 5%;
+      right: 5%;
+      top: 12%;
+      height: 1px;
+      background:
+        linear-gradient(90deg,
+          transparent 0%,
+          rgba(56, 189, 248, 0.2) 10%,
+          rgba(56, 189, 248, 0.9) 30%,
+          rgba(56, 189, 248, 0.2) 45%,
+          transparent 60%);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .hero > * { position: relative; z-index: 1; }
+
     .hero-tag {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
       font-size: 0.8rem;
-      padding: 0.2rem 0.6rem;
+      padding: 0.18rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.7);
       margin-bottom: 0.8rem;
+    }
+    .hero-tag span {
+      opacity: 0.85;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
     }
     .hero-title {
       font-size: 2.1rem;
       font-weight: 800;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
     .hero-subtitle {
-      font-size: 0.97rem;
-      color: #cbd5f5;
-      margin-bottom: 1.1rem;
+      font-size: 0.96rem;
+      color: #e5e7f5;
+      margin-bottom: 1rem;
     }
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
     .btn-primary, .btn-secondary {
       padding: 0.55rem 1.2rem;
@@ -130,18 +181,18 @@
       white-space: nowrap;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
-      color: #f9fafb;
-      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.6);
+      background: linear-gradient(135deg, #22c55e, #22d3ee);
+      color: #0b1120;
+      box-shadow: 0 10px 26px rgba(34, 197, 94, 0.7);
     }
     .btn-primary:hover { transform: translateY(-1px); }
     .btn-secondary {
-      background: transparent;
+      background: rgba(15, 23, 42, 0.9);
       color: #e5e7eb;
-      border: 1px solid rgba(148, 163, 184, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.9);
     }
     .btn-secondary:hover {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.98);
       transform: translateY(-1px);
     }
     .hero-meta {
@@ -154,7 +205,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #9ca3af;
+      color: #bfdbfe;
     }
     .hero-meta-item span:last-child {
       font-size: 0.93rem;
@@ -166,8 +217,8 @@
       border-radius: 1.2rem;
       padding: 1.3rem 1.4rem;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      background: radial-gradient(circle at top left, #1e293b, #020617);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.8);
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.25), transparent 60%), #020617;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
       font-size: 0.9rem;
       display: grid;
       gap: 0.9rem;
@@ -186,39 +237,59 @@
       font-size: 0.75rem;
       padding: 0.15rem 0.55rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.9);
       background: rgba(15, 23, 42, 0.9);
     }
+    .badge-blue { border-color: rgba(59,130,246,0.9); color: #bfdbfe; }
+    .badge-emerald { border-color: rgba(16,185,129,0.9); color: #a7f3d0; }
+    .badge-pink { border-color: rgba(236,72,153,0.9); color: #f9a8d4; }
+    .badge-amber { border-color: rgba(245,158,11,0.9); color: #fed7aa; }
+    .badge-indigo { border-color: rgba(79,70,229,0.9); color: #c7d2fe; }
 
-    /* Flow diagram */
+    /* Flow diagram（專題介紹圖像化） */
     .flow-wrapper {
       background: rgba(15, 23, 42, 0.96);
       border-radius: 1.1rem;
       border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 1.2rem 1.3rem 1.4rem;
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.8);
+      padding: 1.1rem 1.3rem 1.3rem;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.85);
     }
     .flow-steps {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem;
     }
     .flow-item {
       position: relative;
-      background: #020617;
       border-radius: 0.9rem;
-      padding: 0.9rem 0.8rem;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.85rem 0.8rem;
       display: grid;
-      gap: 0.4rem;
+      gap: 0.35rem;
       font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+    .flow-item-data {
+      background: radial-gradient(circle at top left, rgba(59,130,246,0.35), transparent 65%), #020617;
+      border: 1px solid rgba(59,130,246,0.9);
+      box-shadow: 0 0 24px rgba(59,130,246,0.45);
+    }
+    .flow-item-model {
+      background: radial-gradient(circle at center, rgba(16,185,129,0.3), transparent 65%), #020617;
+      border: 1px solid rgba(16,185,129,0.95);
+      box-shadow: 0 0 24px rgba(16,185,129,0.5);
+    }
+    .flow-item-output {
+      background: radial-gradient(circle at top right, rgba(236,72,153,0.35), transparent 65%), #020617;
+      border: 1px solid rgba(236,72,153,0.95);
+      box-shadow: 0 0 24px rgba(236,72,153,0.55);
     }
     .flow-number {
       width: 24px;
       height: 24px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(248,250,252,0.9);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -235,14 +306,13 @@
       flex-wrap: wrap;
       gap: 0.3rem;
       font-size: 0.75rem;
+      margin-top: 0.15rem;
     }
     .pill {
       padding: 0.15rem 0.5rem;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.7);
-    }
-    .flow-arrow {
-      display: none;
+      background: rgba(15,23,42,0.85);
     }
     .flow-caption {
       font-size: 0.8rem;
@@ -314,7 +384,7 @@
       border-radius: 1rem;
       padding: 1.1rem 1.2rem;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.8);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.85);
       font-size: 0.92rem;
     }
     .text-list {
@@ -340,8 +410,10 @@
     .code-label {
       padding: 0.15rem 0.55rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border: 1px solid rgba(147, 197, 253, 0.9);
       font-size: 0.75rem;
+      background: rgba(15,23,42,0.9);
+      color: #bfdbfe;
     }
     .code-tabs {
       display: flex;
@@ -365,10 +437,10 @@
       transform: translateY(-1px);
     }
     .code-tab.active {
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      background: linear-gradient(135deg, #a855f7, #ec4899);
       border-color: transparent;
       color: #f9fafb;
-      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.6);
+      box-shadow: 0 10px 26px rgba(236, 72, 153, 0.6);
     }
     .code-panel { display: none; }
     .code-panel.active { display: block; }
@@ -402,7 +474,7 @@
       gap: 1.4rem;
     }
     .contact-box {
-      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+      background: linear-gradient(135deg, #22c55e, #818cf8);
       border-radius: 1rem;
       padding: 1rem 1.1rem;
       font-size: 0.9rem;
@@ -425,7 +497,10 @@
 
     /* RWD */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: minmax(0, 1fr); }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1.4rem 1.2rem 1.6rem;
+      }
       .grid-2 { grid-template-columns: minmax(0, 1fr); }
       .contact-grid { grid-template-columns: minmax(0, 1fr); }
       .demo-side-by-side { grid-template-columns: minmax(0, 1fr); }
@@ -473,11 +548,11 @@
       <div>
         <div class="hero-tag">
           🩺 Biomedical AI
-          <span style="opacity: .8;">Ultrasound Needle Tip</span>
+          <span>Ultrasound · Needle Tip</span>
         </div>
-        <h1 class="hero-title">超音波針尖偵測&nbsp;·&nbsp;生醫 AI 專題</h1>
+        <h1 class="hero-title">超音波針尖偵測 · 生醫 AI 專題</h1>
         <p class="hero-subtitle">
-          以 3D CNN + ROI 設計，從超音波影片自動找出針尖位置，並輸出可視化軌跡。
+          40 段超音波影片 + 3D CNN，幫忙在影像裡畫出針尖紅點軌跡。
         </p>
 
         <div class="hero-buttons">
@@ -492,7 +567,7 @@
           </div>
           <div class="hero-meta-item">
             <span>Role</span><br />
-            <span>Dataset · Model · Inference 全自操</span>
+            <span>Dataset · Model · Inference</span>
           </div>
           <div class="hero-meta-item">
             <span>Model</span><br />
@@ -509,39 +584,39 @@
         <div>
           <div class="hero-card-title">專題關鍵字</div>
           <div class="hero-badges">
-            <span class="badge">Ultrasound</span>
-            <span class="badge">Needle Tip</span>
-            <span class="badge">3D CNN</span>
-            <span class="badge">ROI Reg.</span>
-            <span class="badge">Trajectory</span>
+            <span class="badge badge-blue">Ultrasound</span>
+            <span class="badge badge-emerald">Needle Tip</span>
+            <span class="badge badge-pink">3D CNN</span>
+            <span class="badge badge-amber">ROI Reg.</span>
+            <span class="badge badge-indigo">Trajectory</span>
           </div>
         </div>
         <div>
-          <div class="hero-card-title">一張圖看專題內容</div>
+          <div class="hero-card-title">一句話介紹</div>
           <p class="muted">
-            下方用 3 個流程方塊，把「資料 → 模型 → 結果」一次整理。
+            看一小段超音波影片 → 模型幫你找出針尖在哪裡，最後變成有紅點的成果影片。
           </p>
         </div>
       </aside>
     </section>
 
-    <!-- FLOW DIAGRAM -->
+    <!-- FLOW DIAGRAM（專題介紹圖像化 + 少字） -->
     <section id="flow">
-      <h2 class="section-title">模型流程圖</h2>
+      <h2 class="section-title">專題流程圖 Overview</h2>
 
       <div class="flow-wrapper">
         <div class="flow-steps">
-          <div class="flow-item">
+          <div class="flow-item flow-item-data">
             <div class="flow-number">1</div>
             <div class="flow-title">資料 & 標註</div>
             <div class="flow-icons">
               <span class="pill">40 段 ultrasound</span>
-              <span class="pill">每段約 100 frame</span>
+              <span class="pill">每段 ≈ 100 frame</span>
               <span class="pill">針尖 (x, y)</span>
             </div>
           </div>
 
-          <div class="flow-item">
+          <div class="flow-item flow-item-model">
             <div class="flow-number">2</div>
             <div class="flow-title">3D CNN 模型</div>
             <div class="flow-icons">
@@ -551,19 +626,19 @@
             </div>
           </div>
 
-          <div class="flow-item">
+          <div class="flow-item flow-item-output">
             <div class="flow-number">3</div>
             <div class="flow-title">輸出 & 修正</div>
             <div class="flow-icons">
               <span class="pill">紅點軌跡</span>
               <span class="pill">線性 b 方法</span>
-              <span class="pill">成果影片</span>
+              <span class="pill">成果影片 f2</span>
             </div>
           </div>
         </div>
 
         <p class="flow-caption">
-          從原始超音波影片出發，經過標註、3D CNN 推論與線性修正，最後疊加紅點輸出影片。
+          圖像化看整個流程：<strong>原始影片 → 3D CNN 推論 → 紅點成果影片</strong>。
         </p>
       </div>
     </section>
@@ -572,7 +647,7 @@
     <section id="demo">
       <h2 class="section-title">成果影片 Demo</h2>
       <p class="muted" style="margin-bottom: 0.7rem;">
-        needle1.mp4：原始超音波影片 · f2.mp4：模型偵測結果（含紅點）。
+        needle1.mp4：原始超音波 · f2.mp4：模型畫好紅點的結果。
       </p>
 
       <div class="demo-tabs">
@@ -584,12 +659,12 @@
       <!-- 原始 -->
       <div class="demo-panel active" id="demo-original">
         <article class="video-card">
-          <h3>原始超音波影片：needle1.mp4</h3>
+          <h3>原始超音波：needle1.mp4</h3>
           <video controls preload="metadata" src="needle1.mp4" type="video/mp4">
             你的瀏覽器不支援 HTML5 影片。
           </video>
           <p class="video-caption">
-            未加任何標記的影像，可看到針尖在雜訊中其實不容易辨識。
+            純超音波影像，針尖很小一點，肉眼其實不算好追。
           </p>
         </article>
       </div>
@@ -602,7 +677,7 @@
             你的瀏覽器不支援 HTML5 影片。
           </video>
           <p class="video-caption">
-            模型為每一幀預測針尖座標，並以紅點標示，軌跡經線性 b 方法平滑化。
+            每一幀的針尖座標由模型預測，再用線性 b 方法平滑整條軌跡。
           </p>
         </article>
       </div>
@@ -635,7 +710,7 @@
           </article>
         </div>
         <p class="video-caption" style="margin-top: 0.6rem;">
-          左右對照可以直接看到：紅點是否跟著真實針尖移動，與修正後軌跡的平滑程度。
+          左右直接對比：紅點有沒有跟著真正的針尖跑。
         </p>
       </div>
     </section>
@@ -646,13 +721,13 @@
 
       <div class="grid-2">
         <article class="text-card">
-          <p>整個專題主要靠兩支 Python：</p>
+          <p>核心就兩支 Python：</p>
           <ul class="text-list">
             <li><strong>cnn.py</strong>：3D CNN 訓練主程式（K-fold + ROI + loss）。</li>
-            <li><strong>infer.py</strong>：讀權重 → 推論 → 畫紅點 → 輸出 f2.mp4。</li>
+            <li><strong>infer.py</strong>：載入權重 → 推論 → 畫紅點 → 輸出 f2.mp4。</li>
           </ul>
           <p style="margin-top: 0.6rem;">
-            下面用 Tab 切換檢視與下載，細節可以直接在 GitHub 上看完整原始碼。
+            下面用 Tab 切換，直接下載或在 GitHub 看完整程式。
           </p>
         </article>
 
@@ -683,7 +758,7 @@
             <a class="download-link" href="infer.py" download>⬇ 下載 infer.py</a>
             <pre><code># infer.py 主要流程（摘要）
 # 1. 讀取訓練好的 checkpoint
-# 2. 將 needle1.mp4 切成 clips，做前處理
+# 2. 將 needle1.mp4 切成 clips 做前處理
 # 3. 以 3D CNN 推論每幀針尖座標
 # 4. 使用線性 b 方法修正軌跡
 # 5. 在畫面上畫紅點，輸出 f2.mp4</code></pre>
@@ -698,19 +773,17 @@
 
       <div class="contact-grid">
         <article class="text-card">
-          <p>
-            這個網站是我在 NTUST 的生醫 AI 專題展示頁。重點是：
-          </p>
+          <p>這個頁面是我在 NTUST 的生醫 AI 專題小作品：</p>
           <ul class="text-list">
-            <li>使用真實超音波影像、自建資料集。</li>
-            <li>自己實作 3D CNN 模型、訓練與推論流程。</li>
-            <li>把結果做成影片方便給老師 / 醫師看。</li>
+            <li>自己蒐集超音波資料、標註針尖。</li>
+            <li>自己寫 3D CNN 訓練與推論程式。</li>
+            <li>做出可以給老師 / 醫師看的成果影片。</li>
           </ul>
         </article>
 
         <aside class="contact-box">
           <h3>Contact</h3>
-          <p>若對專題、程式或合作有興趣，歡迎聯絡我。</p>
+          <p>若對專題或程式有興趣，歡迎聯絡我。</p>
           <div class="contact-info">
             <div>📧 Email：yourmail@example.com</div>
             <div>🔗 GitHub：github.com/chi77770609</div>
