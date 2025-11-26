@@ -213,11 +213,6 @@
     .card-footer { margin-top: 0.4rem; font-size: 0.78rem; color: #9ca3af; }
 
     /* Demo videos */
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
     .video-card {
       background: rgba(15, 23, 42, 0.95);
       border-radius: 0.9rem;
@@ -444,7 +439,6 @@
       .hero { grid-template-columns: minmax(0, 1fr); }
       .grid-2 { grid-template-columns: minmax(0, 1fr); }
       .card-grid { grid-template-columns: minmax(0, 1fr); }
-      .video-grid { grid-template-columns: minmax(0, 1fr); }
       .demo-side-by-side { grid-template-columns: minmax(0, 1fr); }
       .contact-grid { grid-template-columns: minmax(0, 1fr); }
     }
@@ -700,16 +694,17 @@
     <section id="demo">
       <h2 class="section-title">成果影片 Demo</h2>
       <p class="muted" style="margin-bottom: 0.8rem;">
-        💡 說明：<strong>needle1.avi</strong> 為原始超音波影片，<strong>f2.avi</strong> 為模型推論後畫上紅點的成果影片。
+        💡 說明：<strong>needle1.mp4</strong> 為原始超音波影片，
+        <strong>f2.mp4</strong> 為模型推論後畫上紅點的成果影片。
         下面可以用按鈕切換不同觀看方式。
       </p>
 
       <div class="demo-tabs">
         <button class="demo-tab active" data-demo-target="demo-original">
-          原始影片（needle1.avi）
+          原始影片（needle1.mp4）
         </button>
         <button class="demo-tab" data-demo-target="demo-result">
-          偵測結果（f2.avi）
+          偵測結果（f2.mp4）
         </button>
         <button class="demo-tab" data-demo-target="demo-both">
           原始 vs 結果（左右比較）
@@ -719,8 +714,8 @@
       <!-- Panel：原始影片 -->
       <div class="demo-panel active" id="demo-original">
         <article class="video-card">
-          <h3>原始超音波影片：needle1.avi</h3>
-          <video controls preload="metadata" src="needle1.mp4">
+          <h3>原始超音波影片：needle1.mp4</h3>
+          <video controls preload="metadata" src="needle1.mp4" type="video/mp4">
             你的瀏覽器不支援 HTML5 影片。
           </video>
           <p class="video-caption">
@@ -732,8 +727,8 @@
       <!-- Panel：結果影片 -->
       <div class="demo-panel" id="demo-result">
         <article class="video-card">
-          <h3>模型偵測結果：f2.avi</h3>
-          <video controls preload="metadata" src="f2.mp4">
+          <h3>模型偵測結果：f2.mp4</h3>
+          <video controls preload="metadata" src="f2.mp4" type="video/mp4">
             你的瀏覽器不支援 HTML5 影片。
           </video>
           <p class="video-caption">
@@ -747,14 +742,14 @@
       <div class="demo-panel" id="demo-both">
         <div class="demo-side-by-side">
           <article class="video-card">
-            <h3>原始：needle1.avi</h3>
-            <video controls preload="metadata" src="needle1.avi">
+            <h3>原始：needle1.mp4</h3>
+            <video controls preload="metadata" src="needle1.mp4" type="video/mp4">
               你的瀏覽器不支援 HTML5 影片。
             </video>
           </article>
           <article class="video-card">
-            <h3>結果：f2.avi</h3>
-            <video controls preload="metadata" src="f2.avi">
+            <h3>結果：f2.mp4</h3>
+            <video controls preload="metadata" src="f2.mp4" type="video/mp4">
               你的瀏覽器不支援 HTML5 影片。
             </video>
           </article>
@@ -830,7 +825,7 @@
             </a>
             <p class="muted" style="margin-top: 0.3rem;">
               提示：此腳本專門負責推論與畫紅點，你可以在命令列指定輸入影片
-              （例如 needle1.avi）與輸出成果檔名（例如 f2.avi）。
+              （例如 needle1.mp4）與輸出成果檔名（例如 f2.mp4）。
             </p>
             <pre><code># infer.py（節錄概念示意）
 # - 載入指定 fold 的 best 權重
@@ -839,8 +834,8 @@
 # - 反投影回原始畫面後，以紅點畫出針尖位置並輸出影片
 
 # 使用方式範例：
-#   python infer.py infer_f0 needle1.avi f2.avi
-#   python infer.py infer_fold 2 needle1.avi f2.avi --show-roi</code></pre>
+#   python infer.py infer_f0 needle1.mp4 f2.mp4
+#   python infer.py infer_fold 2 needle1.mp4 f2.mp4 --show-roi</code></pre>
           </div>
         </article>
       </div>
@@ -909,8 +904,8 @@
             歡迎透過以下方式聯絡我。
           </p>
           <div class="contact-info">
-            <div>📧 Email：<!-- TODO：改成自己的信箱 --> yourmail@example.com</div>
-            <div>🔗 GitHub：<!-- TODO：改成自己的 GitHub 帳號 --> github.com/chi77770609</div>
+            <div>📧 Email：yourmail@example.com</div>
+            <div>🔗 GitHub：github.com/chi77770609</div>
             <div>📍 Location：Taipei, Taiwan</div>
           </div>
         </aside>
