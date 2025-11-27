@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Biomedical AI Needle Tip</title>
@@ -86,7 +86,7 @@
     }
     .muted { color: #9ca3af; font-size: 0.9rem; }
 
-    /* HERO（頂部背景：用你的 hero-bg.webp） */
+    /* HERO (top background using your image) */
     .hero {
       position: relative;
       margin-top: 1.1rem;
@@ -245,7 +245,7 @@
     .badge-amber { border-color: rgba(245,158,11,0.9); color: #fed7aa; }
     .badge-indigo { border-color: rgba(79,70,229,0.9); color: #c7d2fe; }
 
-    /* Flow diagram（產品價值：一次一張大圖卡，點一下換下一張） */
+    /* Flow diagram (product value: one big card at a time) */
     .flow-wrapper {
       background: rgba(15, 23, 42, 0.96);
       border-radius: 1.1rem;
@@ -327,7 +327,7 @@
       margin-top: 0.2rem;
     }
 
-    /* 使用情境卡片 */
+    /* Use cases */
     .usecases-wrapper {
       background: rgba(15, 23, 42, 0.96);
       border-radius: 1.1rem;
@@ -369,7 +369,7 @@
       border: 1px solid rgba(245,158,11,0.9);
     }
 
-    /* 市場圓餅圖 */
+    /* Market pie chart */
     .market-wrapper {
       background: rgba(15, 23, 42, 0.96);
       border-radius: 1.1rem;
@@ -616,13 +616,13 @@
       <button class="menu-toggle" id="menuToggle" aria-label="menu">☰</button>
       <nav>
         <ul id="navList">
-          <li><a href="#hero">首頁</a></li>
-          <li><a href="#flow">產品價值</a></li>
-          <li><a href="#usecases">使用情境</a></li>
-          <li><a href="#market">市場定位</a></li>
-          <li><a href="#demo">Demo 影片</a></li>
-          <li><a href="#code">技術細節</a></li>
-          <li><a href="#about">關於我</a></li>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#flow">Product Value</a></li>
+          <li><a href="#usecases">Use Cases</a></li>
+          <li><a href="#market">Market Positioning</a></li>
+          <li><a href="#demo">Demo Video</a></li>
+          <li><a href="#code">Tech Details</a></li>
+          <li><a href="#about">About Me</a></li>
         </ul>
       </nav>
     </div>
@@ -636,39 +636,39 @@
           🩺 Biomedical AI
           <span>Ultrasound · Needle Tip</span>
         </div>
-        <h1 class="hero-title">讓 AI 用於醫療</h1>
+        <h1 class="hero-title">Let AI Serve Healthcare</h1>
         <p class="hero-slogan">
-          科技始終來自於人性，所以 AI 應該用於醫療，為人所用。
+          Technology should be human-centered — AI belongs in healthcare, serving people, not the other way around.
         </p>
 
         <div class="hero-buttons">
-          <button class="btn-primary" onclick="scrollToSection('demo')">▶ 立刻看 Demo 影片</button>
-          <button class="btn-secondary" onclick="scrollToSection('about')">👤 認識我 & 合作方式</button>
+          <button class="btn-primary" onclick="scrollToSection('demo')">▶ Watch demo video</button>
+          <button class="btn-secondary" onclick="scrollToSection('about')">👤 About me & collaboration</button>
         </div>
 
         <div class="hero-meta">
           <div class="hero-meta-item">
-            <span>我在做什麼</span><br />
-            <span>用 3D CNN 自動標出超音波中的針尖紅點。</span>
+            <span>What I build</span><br />
+            <span>A 3D CNN that automatically marks the needle tip in ultrasound with a red dot.</span>
           </div>
           <div class="hero-meta-item">
-            <span>適合誰看</span><br />
-            <span>醫師、醫工、AI 團隊、研究實驗室。</span>
+            <span>Who this is for</span><br />
+            <span>Doctors, biomedical engineers, AI teams, research labs.</span>
           </div>
           <div class="hero-meta-item">
-            <span>你能得到什麼</span><br />
-            <span>真實 demo、模型架構、程式檔下載。</span>
+            <span>What you get</span><br />
+            <span>Real demo videos, model overview, downloadable code.</span>
           </div>
           <div class="hero-meta-item">
-            <span>我能提供的</span><br />
-            <span>醫療影像 AI 開發、產品原型打造、合作專題。</span>
+            <span>What I can offer</span><br />
+            <span>Medical imaging AI development, product prototyping, joint projects.</span>
           </div>
         </div>
       </div>
 
       <aside class="hero-card">
         <div>
-          <div class="hero-card-title">產品關鍵字</div>
+          <div class="hero-card-title">Product keywords</div>
           <div class="hero-badges">
             <span class="badge badge-blue">Ultrasound</span>
             <span class="badge badge-emerald">Needle Tip Detection</span>
@@ -678,85 +678,86 @@
           </div>
         </div>
         <div>
-          <div class="hero-card-title">一句話 Pitch</div>
+          <div class="hero-card-title">One-line pitch</div>
           <p class="muted">
-            如果你常在超音波裡找針尖，這個 AI 產品原型可以幫你省下眼力與時間，也展示我能獨立完成從資料到 demo 的整條 pipeline。
+            If you often have to search for the needle tip on ultrasound, this AI prototype saves your eyes and time —
+            and proves I can own the whole pipeline from raw data to demo.
           </p>
         </div>
       </aside>
     </section>
 
-    <!-- FLOW DIAGRAM：產品價值（一次一張，點一下換下一張） -->
+    <!-- FLOW DIAGRAM: Product value (one card, click to go next) -->
     <section id="flow">
-      <h2 class="section-title">產品價值 · 一張張看</h2>
+      <h2 class="section-title">Product value · One slide at a time</h2>
 
       <div class="flow-wrapper">
         <div class="flow-card flow-item-data active">
           <div class="flow-number">1</div>
-          <div class="flow-title">臨床痛點</div>
+          <div class="flow-title">Clinical pain points</div>
           <div class="flow-icons">
-            <span class="pill">針尖超小、不好辨識</span>
-            <span class="pill">教學示範難重現</span>
-            <span class="pill">手動標註很花時間</span>
+            <span class="pill">Needle tip is tiny and hard to see</span>
+            <span class="pill">Difficult to reproduce procedures for teaching</span>
+            <span class="pill">Manual frame-by-frame labeling is slow</span>
           </div>
         </div>
 
         <div class="flow-card flow-item-model">
           <div class="flow-number">2</div>
-          <div class="flow-title">AI 解決方案</div>
+          <div class="flow-title">AI solution</div>
           <div class="flow-icons">
-            <span class="pill">3D R(2+1)D 讀取影片</span>
-            <span class="pill">ROI 針尖定位 (rx, ry)</span>
-            <span class="pill">線性 b 方法平滑軌跡</span>
+            <span class="pill">3D R(2+1)D reads video clips</span>
+            <span class="pill">ROI-based needle tip (rx, ry)</span>
+            <span class="pill">Linear-b smoothing for stable trajectory</span>
           </div>
         </div>
 
         <div class="flow-card flow-item-output">
           <div class="flow-number">3</div>
-          <div class="flow-title">帶來的好處</div>
+          <div class="flow-title">Benefits</div>
           <div class="flow-icons">
-            <span class="pill">更快確認針尖位置</span>
-            <span class="pill">可做教學與回顧</span>
-            <span class="pill">可延伸到其他介入手術</span>
+            <span class="pill">Faster needle-tip confirmation</span>
+            <span class="pill">Clearer teaching & review material</span>
+            <span class="pill">Extendable to other interventional procedures</span>
           </div>
         </div>
 
         <p class="flow-caption">
-          點一下卡片 → 自動跳到下一步驟（1 → 2 → 3 → 再回到 1）。
+          Click the card → it jumps to the next step (1 → 2 → 3 → back to 1).
         </p>
       </div>
     </section>
 
-    <!-- 使用情境 -->
+    <!-- USE CASES -->
     <section id="usecases">
-      <h2 class="section-title">什麼情況會用到這個技術？</h2>
+      <h2 class="section-title">When would you use this technique?</h2>
       <div class="usecases-wrapper">
         <div class="usecases-cards">
           <article class="usecase-card usecase-blue">
-            <h3>超音波引導打針</h3>
-            <p>做神經阻斷、血管穿刺時，自動標記針尖，幫助確認位置與安全距離。</p>
+            <h3>Ultrasound-guided procedures</h3>
+            <p>For nerve blocks or vascular access, automatically highlight the needle tip to help confirm position and safety margins.</p>
           </article>
           <article class="usecase-card usecase-emerald">
-            <h3>教學 & 訓練影片</h3>
-            <p>住院醫師或學生回看錄影時，用紅點軌跡快速理解針尖怎麼走。</p>
+            <h3>Teaching & training videos</h3>
+            <p>Residents and students can replay recordings and follow the red dot trajectory instead of guessing where the tip is.</p>
           </article>
           <article class="usecase-card usecase-amber">
-            <h3>研究 & 產品開發</h3>
-            <p>建立自動標註工具，幫助整理 dataset，或評估新針具、新演算法。</p>
+            <h3>Research & product development</h3>
+            <p>Use it as an auto-labeling helper for datasets, or plug it into new devices / algorithms for evaluation.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 市場圓餅圖：AI 產業中醫療 AI 佔比 -->
+    <!-- MARKET PIE CHART: Healthcare AI share inside AI -->
     <section id="market">
-      <h2 class="section-title">AI 產業中 · 醫療 AI 的位置</h2>
+      <h2 class="section-title">Where healthcare AI sits inside the AI industry</h2>
 
       <div class="market-wrapper">
         <div class="market-inner">
           <canvas id="marketChart"></canvas>
           <p class="market-caption">
-            * 示意圖：假設醫療 AI 約佔整體 AI 產業的 20%，但多落在高風險、高價值的關鍵場景。
+            * Illustration only: assume healthcare AI is about 20% of the AI industry — but focused on high-risk, high-value scenarios.
           </p>
         </div>
       </div>
@@ -764,122 +765,122 @@
 
     <!-- DEMO -->
     <section id="demo">
-      <h2 class="section-title">Demo 影片 · 看真實效果</h2>
+      <h2 class="section-title">Demo videos · See it working</h2>
       <p class="muted" style="margin-bottom: 0.7rem;">
-        needle1.mp4：原始超音波 · f2.mp4：AI 自動標記針尖紅點的結果。
+        needle1.mp4: raw ultrasound · f2.mp4: AI-generated red dot on the needle tip.
       </p>
 
       <div class="demo-tabs">
-        <button class="demo-tab active" data-demo-target="demo-original">原始影片</button>
-        <button class="demo-tab" data-demo-target="demo-result">AI 結果</button>
-        <button class="demo-tab" data-demo-target="demo-both">左右比較</button>
+        <button class="demo-tab active" data-demo-target="demo-original">Raw video</button>
+        <button class="demo-tab" data-demo-target="demo-result">AI result</button>
+        <button class="demo-tab" data-demo-target="demo-both">Side-by-side</button>
       </div>
 
-      <!-- 原始 -->
+      <!-- Raw -->
       <div class="demo-panel active" id="demo-original">
         <article class="video-card">
-          <h3>原始超音波：needle1.mp4</h3>
+          <h3>Raw ultrasound: needle1.mp4</h3>
           <video controls preload="metadata" src="needle1.mp4" type="video/mp4">
-            你的瀏覽器不支援 HTML5 影片。
+            Your browser does not support HTML5 video.
           </video>
           <p class="video-caption">
-            純超音波影像，針尖只有小小一點，實際臨床上需要高度專注才能追蹤。
+            Pure ultrasound image — the needle tip is just a tiny bright dot and requires intense focus to track in real time.
           </p>
         </article>
       </div>
 
-      <!-- 結果 -->
+      <!-- Result -->
       <div class="demo-panel" id="demo-result">
         <article class="video-card">
-          <h3>AI 偵測結果：f2.mp4</h3>
+          <h3>AI detection result: f2.mp4</h3>
           <video controls preload="metadata" src="f2.mp4" type="video/mp4">
-            你的瀏覽器不支援 HTML5 影片。
+            Your browser does not support HTML5 video.
           </video>
           <p class="video-caption">
-            每幀的針尖座標由模型預測，再用線性 b 方法修正，使紅點軌跡穩定貼著真正的針尖。
+            The model predicts needle-tip coordinates frame by frame, then the linear-b method smooths the trajectory so the red dot stays glued to the true tip.
           </p>
         </article>
       </div>
 
-      <!-- 左右比較 -->
+      <!-- Side-by-side -->
       <div class="demo-panel" id="demo-both">
         <div class="demo-side-by-side">
           <article class="video-card">
-            <h3>原始：needle1.mp4</h3>
+            <h3>Raw: needle1.mp4</h3>
             <video
               controls
               preload="metadata"
               src="https://chi77770609.github.io/final/biomed-ai-site/needle1.mp4"
               type="video/mp4"
             >
-              你的瀏覽器不支援 HTML5 影片。
+              Your browser does not support HTML5 video.
             </video>
           </article>
 
           <article class="video-card">
-            <h3>AI 結果：f2.mp4</h3>
+            <h3>AI result: f2.mp4</h3>
             <video
               controls
               preload="metadata"
               src="https://chi77770609.github.io/final/biomed-ai-site/f2.mp4"
               type="video/mp4"
             >
-              你的瀏覽器不支援 HTML5 影片。
+              Your browser does not support HTML5 video.
             </video>
           </article>
         </div>
         <p class="video-caption" style="margin-top: 0.6rem;">
-          左右直接對比：你可以很直覺地評估 AI 標註的準確度，適不適合你的臨床或研究情境。
+          Side-by-side comparison so you can visually judge the accuracy and decide if it fits your clinical or research scenario.
         </p>
       </div>
     </section>
 
     <!-- CODE -->
     <section id="code">
-      <h2 class="section-title">技術細節 & 程式檔</h2>
+      <h2 class="section-title">Technical details & code</h2>
 
       <div class="grid-2">
         <article class="text-card">
-          <p>如果你是工程師或研究者，這裡是我能提供的技術實力：</p>
+          <p>If you're an engineer or researcher, here is what I actually implemented:</p>
           <ul class="text-list">
-            <li><strong>3D CNN 架構</strong>：使用 R(2+1)D-18 處理時間維度的超音波影片。</li>
-            <li><strong>ROI 座標回歸</strong>：把針尖座標轉成 ROI 比例 (rx, ry) 來訓練。</li>
-            <li><strong>K-fold 訓練流程</strong>：完整的 train / valid 切分與模型儲存。</li>
-            <li><strong>推論到 Demo</strong>：從 checkpoint → 預測 → 畫紅點 → 輸出影片。</li>
+            <li><strong>3D CNN architecture</strong>: R(2+1)D-18 for temporal ultrasound videos.</li>
+            <li><strong>ROI coordinate regression</strong>: train on (rx, ry) within a defined ROI.</li>
+            <li><strong>K-fold training</strong>: clean train/valid split and checkpoint saving.</li>
+            <li><strong>From inference to demo</strong>: checkpoint → prediction → red dot overlay → output video.</li>
           </ul>
         </article>
 
         <article>
           <div class="code-header">
             <span class="code-label">Python · PyTorch</span>
-            <span>互動程式檔選擇</span>
+            <span>Interactive code tabs</span>
           </div>
 
           <div class="code-tabs">
-            <button class="code-tab active" data-code-target="code-cnn">cnn.py（訓練）</button>
-            <button class="code-tab" data-code-target="code-infer">infer.py（推論 & 產生影片）</button>
+            <button class="code-tab active" data-code-target="code-cnn">cnn.py (training)</button>
+            <button class="code-tab" data-code-target="code-infer">infer.py (inference & video)</button>
           </div>
 
           <!-- cnn.py -->
           <div class="code-panel active" id="code-cnn">
-            <a class="download-link" href="cnn.py" download>⬇ 下載 cnn.py</a>
-            <pre><code># cnn.py 主要流程（摘要）
-# 1. 載入 40 段 ultrasound + CSV 標註
-# 2. 將座標轉成 ROI 比例 (rx, ry)
-# 3. 建立 R(2+1)D-18 模型
-# 4. 以 K-fold 方式訓練
-# 5. 儲存最佳 checkpoint 作為之後推論使用</code></pre>
+            <a class="download-link" href="cnn.py" download>⬇ Download cnn.py</a>
+            <pre><code># cnn.py main pipeline (summary)
+# 1. Load 40 ultrasound videos + CSV labels
+# 2. Convert pixel coordinates to ROI ratios (rx, ry)
+# 3. Build the R(2+1)D-18 model
+# 4. Train with K-fold cross validation
+# 5. Save the best checkpoints for later inference</code></pre>
           </div>
 
           <!-- infer.py -->
           <div class="code-panel" id="code-infer">
-            <a class="download-link" href="infer.py" download>⬇ 下載 infer.py</a>
-            <pre><code># infer.py 主要流程（摘要）
-# 1. 讀取訓練好的 checkpoint
-# 2. 將 needle1.mp4 切成 clips 並做前處理
-# 3. 以 3D CNN 推論每幀針尖座標
-# 4. 使用線性 b 方法修正軌跡，濾掉離群點
-# 5. 在畫面上畫紅點，輸出 f2.mp4 作為 Demo</code></pre>
+            <a class="download-link" href="infer.py" download>⬇ Download infer.py</a>
+            <pre><code># infer.py main pipeline (summary)
+# 1. Load a trained checkpoint
+# 2. Slice needle1.mp4 into clips and preprocess
+# 3. Use the 3D CNN to predict needle-tip coordinates
+# 4. Apply the linear-b method to smooth and filter outliers
+# 5. Draw the red dot and export f2.mp4 as the demo video</code></pre>
           </div>
         </article>
       </div>
@@ -887,34 +888,34 @@
 
     <!-- ABOUT -->
     <section id="about">
-      <h2 class="section-title">關於我 & 合作想法</h2>
+      <h2 class="section-title">About me & collaboration ideas</h2>
 
       <div class="about-mini">
-        <h3 style="font-size:0.95rem; margin-bottom:0.3rem;">為什麼做這個生醫 AI？</h3>
+        <h3 style="font-size:0.95rem; margin-bottom:0.3rem;">Why this healthcare AI project?</h3>
         <p>
-          我在看超音波引導打針的畫面時發現，連有經驗的醫師都要很專注才找得到針尖。
-          與其只做一份作業，我更想做出真的可以減少負擔的工具，所以把自己愛寫程式、玩 AI 的興趣，
-          跟醫療影像結合，做出這個「幫你找針尖」的產品原型。
+          When I watched ultrasound-guided procedures, I realized even experienced doctors have to focus hard to track the needle tip.
+          Instead of just submitting a class assignment, I wanted to build something that actually reduces that burden.
+          So I combined my interest in coding and AI with medical imaging, and turned “find the needle tip” into a working product prototype.
         </p>
       </div>
 
       <div class="contact-grid">
         <article class="text-card">
-          <p>我喜歡把醫療現場的實際問題，變成可以 demo 的 AI 產品原型。</p>
+          <p>I like turning real problems in clinical practice into demo-ready AI prototypes.</p>
           <ul class="text-list">
-            <li>可以獨立完成：資料整理 → 模型設計 → 訓練 → 推論 → Demo 影片。</li>
-            <li>熟悉影像 / 時序資料處理、PyTorch、3D CNN 與基本數據前處理。</li>
-            <li>期待跟醫師、研究團隊或公司合作，把原型做成真正被使用的產品。</li>
+            <li>Comfortable owning the whole pipeline: data → model → training → inference → demo video.</li>
+            <li>Experience with image / sequence data, PyTorch, 3D CNNs, and basic data preprocessing.</li>
+            <li>Looking to work with doctors, research teams, or companies to turn prototypes into real products.</li>
           </ul>
         </article>
 
         <aside class="contact-box">
-          <h3>想合作嗎？歡迎直接找我</h3>
-          <p>如果你正在做生醫或 AI 相關專案，需要一個會自己動手寫 code、願意熬夜 debug 的夥伴，很歡迎跟我聊聊。</p>
+          <h3>Interested in collaborating?</h3>
+          <p>If you're working on healthcare or AI projects and want someone who actually writes code and is willing to stay up debugging, feel free to reach out.</p>
           <div class="contact-info">
-            <div>📧 Email：percypercy123123@gmail.com</div>
-            <div>📱 Phone：0912907208</div>
-            <div>📍 Taipei · Taiwan</div>
+            <div>📧 Email: percypercy123123@gmail.com</div>
+            <div>📱 Phone: 0912907208</div>
+            <div>📍 Taipei, Taiwan</div>
           </div>
         </aside>
       </div>
@@ -922,7 +923,7 @@
   </main>
 
   <footer>
-    © <span id="year"></span> Biomedical AI Needle Tip Project。
+    © <span id="year"></span> Biomedical AI Needle-Tip Project.
   </footer>
 
   <!-- Chart.js CDN -->
@@ -979,7 +980,7 @@
       });
     });
 
-    // Flow cards：一次一張，點一下跳下一張
+    // Flow cards: one at a time, click to go to next
     const flowCards = document.querySelectorAll(".flow-card");
     let currentFlow = 0;
     if (flowCards.length > 0) {
@@ -992,21 +993,21 @@
       });
     }
 
-    // 市場圓餅圖：AI 產業中醫療 AI 佔比（示意 20%）
+    // Market pie chart: healthcare AI share inside overall AI (example 20%)
     const marketCtx = document.getElementById("marketChart");
     if (marketCtx && window.Chart) {
       new Chart(marketCtx, {
         type: "pie",
         data: {
           labels: [
-            "醫療 AI",
-            "其他 AI 應用"
+            "Healthcare AI",
+            "Other AI applications"
           ],
           datasets: [{
             data: [20, 80],
             backgroundColor: [
-              "rgba(56, 189, 248, 0.9)",  // 醫療 AI
-              "rgba(107, 114, 128, 0.9)" // 其他 AI
+              "rgba(56, 189, 248, 0.9)",  // healthcare AI
+              "rgba(107, 114, 128, 0.9)"  // other AI
             ],
             borderColor: [
               "rgba(15, 23, 42, 1)",
