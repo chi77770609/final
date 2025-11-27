@@ -327,6 +327,74 @@
       margin-top: 0.2rem;
     }
 
+    /* 使用情境卡片 */
+    .usecases-wrapper {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 1.2rem 1.4rem 1.4rem;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.85);
+    }
+    .usecases-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .usecase-card {
+      border-radius: 1rem;
+      padding: 0.9rem 1rem;
+      font-size: 0.9rem;
+      display: grid;
+      gap: 0.3rem;
+      box-shadow: 0 16px 36px rgba(15,23,42,0.9);
+    }
+    .usecase-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .usecase-card p {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+    .usecase-blue {
+      background: radial-gradient(circle at top left, rgba(59,130,246,0.35), transparent 65%), #020617;
+      border: 1px solid rgba(59,130,246,0.9);
+    }
+    .usecase-emerald {
+      background: radial-gradient(circle at top, rgba(16,185,129,0.35), transparent 65%), #020617;
+      border: 1px solid rgba(16,185,129,0.9);
+    }
+    .usecase-amber {
+      background: radial-gradient(circle at top right, rgba(245,158,11,0.35), transparent 65%), #020617;
+      border: 1px solid rgba(245,158,11,0.9);
+    }
+
+    /* 市場圓餅圖 */
+    .market-wrapper {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 1.2rem 1.4rem 1.4rem;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.85);
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .market-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    #marketChart {
+      max-width: 360px;
+      width: 100%;
+    }
+    .market-caption {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
     /* Demo */
     .video-card {
       background: rgba(15, 23, 42, 0.96);
@@ -520,6 +588,7 @@
       .grid-2 { grid-template-columns: minmax(0, 1fr); }
       .contact-grid { grid-template-columns: minmax(0, 1fr); }
       .demo-side-by-side { grid-template-columns: minmax(0, 1fr); }
+      .usecases-cards { grid-template-columns: minmax(0, 1fr); }
     }
     @media (max-width: 720px) {
       nav ul {
@@ -549,6 +618,8 @@
         <ul id="navList">
           <li><a href="#hero">首頁</a></li>
           <li><a href="#flow">產品價值</a></li>
+          <li><a href="#usecases">使用情境</a></li>
+          <li><a href="#market">市場定位</a></li>
           <li><a href="#demo">Demo 影片</a></li>
           <li><a href="#code">技術細節</a></li>
           <li><a href="#about">關於我</a></li>
@@ -653,6 +724,41 @@
         <p class="flow-caption">
           點一下卡片 → 自動跳到下一步驟（1 → 2 → 3 → 再回到 1）。
         </p>
+      </div>
+    </section>
+
+    <!-- 使用情境 -->
+    <section id="usecases">
+      <h2 class="section-title">什麼情況會用到這個技術？</h2>
+      <div class="usecases-wrapper">
+        <div class="usecases-cards">
+          <article class="usecase-card usecase-blue">
+            <h3>超音波引導打針</h3>
+            <p>做神經阻斷、血管穿刺時，自動標記針尖，幫助確認位置與安全距離。</p>
+          </article>
+          <article class="usecase-card usecase-emerald">
+            <h3>教學 & 訓練影片</h3>
+            <p>住院醫師或學生回看錄影時，用紅點軌跡快速理解針尖怎麼走。</p>
+          </article>
+          <article class="usecase-card usecase-amber">
+            <h3>研究 & 產品開發</h3>
+            <p>建立自動標註工具，幫助整理 dataset，或評估新針具、新演算法。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 市場圓餅圖 -->
+    <section id="market">
+      <h2 class="section-title">醫療 AI 市場 & 我的定位</h2>
+
+      <div class="market-wrapper">
+        <div class="market-inner">
+          <canvas id="marketChart"></canvas>
+          <p class="market-caption">
+            * 圖表為示意分布：大型企業、醫院系統、研究單位，還有像我這樣的產品原型 —— 在小比例裡持續成長。
+          </p>
+        </div>
       </div>
     </section>
 
@@ -819,6 +925,9 @@
     © <span id="year"></span> Biomedical AI Needle Tip Project.
   </footer>
 
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <script>
     // smooth scroll
     function scrollToSection(id) {
@@ -880,6 +989,51 @@
           currentFlow = (currentFlow + 1) % flowCards.length;
           flowCards[currentFlow].classList.add("active");
         });
+      });
+    }
+
+    // 市場圓餅圖（示意數據）
+    const marketCtx = document.getElementById("marketChart");
+    if (marketCtx && window.Chart) {
+      new Chart(marketCtx, {
+        type: "pie",
+        data: {
+          labels: [
+            "大型醫療 AI 企業",
+            "醫院 / 醫療系統",
+            "學術與研究單位",
+            "我的產品原型"
+          ],
+          datasets: [{
+            data: [40, 30, 20, 10],
+            backgroundColor: [
+              "rgba(59, 130, 246, 0.9)",
+              "rgba(16, 185, 129, 0.9)",
+              "rgba(139, 92, 246, 0.9)",
+              "rgba(248, 113, 113, 0.95)"
+            ],
+            borderColor: [
+              "rgba(15, 23, 42, 1)",
+              "rgba(15, 23, 42, 1)",
+              "rgba(15, 23, 42, 1)",
+              "rgba(15, 23, 42, 1)"
+            ],
+            borderWidth: 2
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              labels: {
+                color: "#e5e7eb",
+                font: { size: 11 }
+              }
+            },
+            tooltip: {
+              bodyFont: { size: 12 }
+            }
+          }
+        }
       });
     }
 
