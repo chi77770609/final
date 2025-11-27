@@ -99,7 +99,6 @@
       border-radius: 1.5rem;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      /* 這裡改成你的背景圖 hero-bg.webp（請確保此檔案在 repo 根目錄） */
       background:
         linear-gradient(135deg, rgba(3,7,18,0.82), rgba(3,7,18,0.55)),
         url("hero-bg.webp") center/cover no-repeat;
@@ -113,11 +112,10 @@
         linear-gradient(120deg, rgba(148, 163, 184, 0.09) 1px, transparent 1px),
         linear-gradient(210deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
       background-size: 80px 80px;
-      opacity: 0.25;  /* 降低透明度，讓照片比較清楚 */
+      opacity: 0.25;
       pointer-events: none;
     }
     .hero::after {
-      /* 簡單心電圖線條 */
       content: "";
       position: absolute;
       left: 5%;
@@ -132,7 +130,7 @@
           rgba(56, 189, 248, 0.2) 45%,
           transparent 60%);
       box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
-      opacity: 0.35;  /* 也調淡一點 */
+      opacity: 0.35;
       pointer-events: none;
     }
     .hero > * { position: relative; z-index: 1; }
@@ -157,12 +155,11 @@
     .hero-title {
       font-size: 2.1rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
     }
     .hero-slogan {
       font-size: 0.9rem;
       color: #a5f3fc;
-      margin-bottom: 0.4rem;
+      margin: 0.4rem 0 1.1rem;
     }
     .hero-subtitle {
       font-size: 0.96rem;
@@ -253,7 +250,7 @@
     .badge-amber { border-color: rgba(245,158,11,0.9); color: #fed7aa; }
     .badge-indigo { border-color: rgba(79,70,229,0.9); color: #c7d2fe; }
 
-    /* Flow diagram（產品價值） */
+    /* Flow diagram（產品價值：可滑動） */
     .flow-wrapper {
       background: rgba(15, 23, 42, 0.96);
       border-radius: 1.1rem;
@@ -262,10 +259,22 @@
       box-shadow: 0 16px 36px rgba(15, 23, 42, 0.85);
     }
     .flow-steps {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
       gap: 1rem;
       margin-bottom: 0.7rem;
+      overflow-x: auto;
+      padding-bottom: 0.4rem;
+      scroll-snap-type: x mandatory;
+    }
+    .flow-steps::-webkit-scrollbar {
+      height: 6px;
+    }
+    .flow-steps::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .flow-steps::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.6);
+      border-radius: 999px;
     }
     .flow-item {
       position: relative;
@@ -275,6 +284,8 @@
       gap: 0.35rem;
       font-size: 0.85rem;
       color: #e5e7eb;
+      min-width: 260px;
+      scroll-snap-align: center;
     }
     .flow-item-data {
       background: radial-gradient(circle at top left, rgba(59,130,246,0.35), transparent 65%), #020617;
@@ -325,6 +336,25 @@
       font-size: 0.8rem;
       color: #9ca3af;
       text-align: center;
+      margin-top: 0.3rem;
+    }
+    .flow-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 0.3rem;
+    }
+    .flow-nav-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(15,23,42,0.95);
+      color: #e5e7eb;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    .flow-nav-btn:hover {
+      background: rgba(30,64,175,0.9);
     }
 
     /* Demo */
@@ -511,7 +541,6 @@
       .grid-2 { grid-template-columns: minmax(0, 1fr); }
       .contact-grid { grid-template-columns: minmax(0, 1fr); }
       .demo-side-by-side { grid-template-columns: minmax(0, 1fr); }
-      .flow-steps { grid-template-columns: minmax(0, 1fr); }
     }
     @media (max-width: 720px) {
       nav ul {
@@ -601,18 +630,23 @@
         <div>
           <div class="hero-card-title">一句話 Pitch</div>
           <p class="muted">
-            如果你常在超音波裡找針尖，這個 AI 產品原型可以幫你省下眼力與時間，也展示了我能獨立完成從資料到 demo 的整條 pipeline。
+            如果你常在超音波裡找針尖，這個 AI 產品原型可以幫你省下眼力與時間，也展示我能獨立完成從資料到 demo 的整條 pipeline。
           </p>
         </div>
       </aside>
     </section>
 
-    <!-- FLOW DIAGRAM：產品價值 -->
+    <!-- FLOW DIAGRAM：產品價值（可滑動） -->
     <section id="flow">
-      <h2 class="section-title">產品價值 · 一張圖看懂</h2>
+      <h2 class="section-title">產品價值 · 滑動看重點</h2>
 
       <div class="flow-wrapper">
-        <div class="flow-steps">
+        <div class="flow-nav">
+          <button class="flow-nav-btn" data-flow-dir="prev">◀</button>
+          <button class="flow-nav-btn" data-flow-dir="next">▶</button>
+        </div>
+
+        <div class="flow-steps" id="flowSteps">
           <div class="flow-item flow-item-data">
             <div class="flow-number">1</div>
             <div class="flow-title">臨床痛點</div>
@@ -635,7 +669,7 @@
 
           <div class="flow-item flow-item-output">
             <div class="flow-number">3</div>
-            <div class="flow-title">對你帶來的好處</div>
+            <div class="flow-title">帶來的好處</div>
             <div class="flow-icons">
               <span class="pill">更快確認針尖位置</span>
               <span class="pill">可做教學與回顧</span>
@@ -645,7 +679,7 @@
         </div>
 
         <p class="flow-caption">
-          產品邏輯：<strong>從痛點出發 → 用 AI 解決 → 讓醫療現場更省力、教學更直觀。</strong>
+          手機可以左右滑動卡片，或用按鈕切換：<strong>從痛點 → AI 解法 → 臨床價值</strong> 一次看懂。
         </p>
       </div>
     </section>
@@ -730,14 +764,11 @@
         <article class="text-card">
           <p>如果你是工程師或研究者，這裡是我能提供的技術實力：</p>
           <ul class="text-list">
-            <li><strong>3D CNN 架構</strong>：使用 R(2+1)D-18，處理時間維度的超音波影片。</li>
+            <li><strong>3D CNN 架構</strong>：使用 R(2+1)D-18 處理時間維度的超音波影片。</li>
             <li><strong>ROI 座標回歸</strong>：把針尖座標轉成 ROI 比例 (rx, ry) 來訓練。</li>
             <li><strong>K-fold 訓練流程</strong>：完整的 train / valid 切分與模型儲存。</li>
-            <li><strong>推論到產品 Demo</strong>：從 checkpoint → 預測 → 畫紅點 → 輸出影片。</li>
+            <li><strong>推論到 Demo</strong>：從 checkpoint → 預測 → 畫紅點 → 輸出影片。</li>
           </ul>
-          <p style="margin-top: 0.6rem;">
-            下面用 Tab 切換，可以直接下載程式或整合到你的 pipeline。
-          </p>
         </article>
 
         <article>
@@ -786,7 +817,7 @@
           <ul class="text-list">
             <li>可以獨立完成：資料整理 → 模型設計 → 訓練 → 推論 → Demo 影片。</li>
             <li>熟悉影像 / 時序資料處理、PyTorch、3D CNN 與基本數據前處理。</li>
-            <li>未來希望跟醫師、研究團隊或公司一起，把原型變成真正被使用的產品。</li>
+            <li>期待跟醫師、研究團隊或公司合作，把原型做成真正被使用的產品。</li>
           </ul>
         </article>
 
@@ -857,6 +888,23 @@
         });
       });
     });
+
+    // flow nav buttons（滑動產品價值卡片）
+    const flowSteps = document.getElementById("flowSteps");
+    const flowNavBtns = document.querySelectorAll(".flow-nav-btn");
+    if (flowSteps && flowNavBtns.length) {
+      flowNavBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const dir = btn.dataset.flowDir === "next" ? 1 : -1;
+          const card = flowSteps.querySelector(".flow-item");
+          const cardWidth = card ? card.offsetWidth + 16 : 280;
+          flowSteps.scrollBy({
+            left: dir * cardWidth,
+            behavior: "smooth",
+          });
+        });
+      });
+    }
 
     // year
     document.getElementById("year").textContent = new Date().getFullYear();
