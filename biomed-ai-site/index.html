@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Personal biomedical AI project: ultrasound needle tip detection with 3D CNN and visual demos."
+    content="Personal biomedical AI product: ultrasound needle tip detection with 3D CNN, demo videos, and code."
   />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -162,7 +162,7 @@
     }
     .hero-slogan {
       font-size: 0.9rem;
-      color: #a5f3fc; /* 淺藍綠，醫療感 */
+      color: #a5f3fc;
       margin-bottom: 0.4rem;
     }
     .hero-subtitle {
@@ -254,7 +254,7 @@
     .badge-amber { border-color: rgba(245,158,11,0.9); color: #fed7aa; }
     .badge-indigo { border-color: rgba(79,70,229,0.9); color: #c7d2fe; }
 
-    /* Flow diagram（專題介紹圖像化） */
+    /* Flow diagram（產品價值） */
     .flow-wrapper {
       background: rgba(15, 23, 42, 0.96);
       border-radius: 1.1rem;
@@ -541,10 +541,10 @@
       <nav>
         <ul id="navList">
           <li><a href="#hero">首頁</a></li>
-          <li><a href="#flow">流程圖</a></li>
-          <li><a href="#demo">成果影片</a></li>
-          <li><a href="#code">程式檔</a></li>
-          <li><a href="#about">關於</a></li>
+          <li><a href="#flow">產品價值</a></li>
+          <li><a href="#demo">Demo 影片</a></li>
+          <li><a href="#code">技術細節</a></li>
+          <li><a href="#about">關於我</a></li>
         </ul>
       </nav>
     </div>
@@ -558,114 +558,114 @@
           🩺 Biomedical AI
           <span>Ultrasound · Needle Tip</span>
         </div>
-        <h1 class="hero-title">超音波針尖偵測 · 生醫 AI 專題</h1>
+        <h1 class="hero-title">用 AI 幫你看懂超音波裡的針尖</h1>
 
         <p class="hero-slogan">
           科技始終來自於人性，所以 AI 應該用於醫療，為人所用。
         </p>
 
         <p class="hero-subtitle">
-          40 段超音波影片 + 3D CNN，幫忙在影像裡畫出針尖紅點軌跡。
+          我把「找針尖」這件事做成一個生醫 AI 產品原型：給你看真實影片、模型流程和完整程式碼。
         </p>
 
         <div class="hero-buttons">
-          <button class="btn-primary" onclick="scrollToSection('demo')">▶ 看成果影片</button>
-          <button class="btn-secondary" onclick="scrollToSection('code')">&lt;/&gt; 看程式檔</button>
+          <button class="btn-primary" onclick="scrollToSection('demo')">▶ 立刻看 Demo 影片</button>
+          <button class="btn-secondary" onclick="scrollToSection('about')">👤 認識我 & 合作方式</button>
         </div>
 
         <div class="hero-meta">
           <div class="hero-meta-item">
-            <span>Project</span><br />
-            <span>Ultrasound Needle Tip Detection</span>
+            <span>我在做什麼</span><br />
+            <span>用 3D CNN 自動標出超音波中的針尖紅點。</span>
           </div>
           <div class="hero-meta-item">
-            <span>Role</span><br />
-            <span>Dataset · Model · Inference</span>
+            <span>適合誰看</span><br />
+            <span>醫師、醫工、AI 團隊、研究實驗室。</span>
           </div>
           <div class="hero-meta-item">
-            <span>Model</span><br />
-            <span>3D R(2+1)D-18 · PyTorch</span>
+            <span>你能得到什麼</span><br />
+            <span>真實 demo、模型架構、程式檔下載。</span>
           </div>
           <div class="hero-meta-item">
-            <span>Location</span><br />
-            <span>Taipei · Taiwan</span>
+            <span>我能提供的</span><br />
+            <span>醫療影像 AI 開發、產品原型打造、合作專題。</span>
           </div>
         </div>
       </div>
 
       <aside class="hero-card">
         <div>
-          <div class="hero-card-title">專題關鍵字</div>
+          <div class="hero-card-title">產品關鍵字</div>
           <div class="hero-badges">
             <span class="badge badge-blue">Ultrasound</span>
-            <span class="badge badge-emerald">Needle Tip</span>
+            <span class="badge badge-emerald">Needle Tip Detection</span>
             <span class="badge badge-pink">3D CNN</span>
-            <span class="badge badge-amber">ROI Reg.</span>
-            <span class="badge badge-indigo">Trajectory</span>
+            <span class="badge badge-amber">ROI Regression</span>
+            <span class="badge badge-indigo">Trajectory Smoothing</span>
           </div>
         </div>
         <div>
-          <div class="hero-card-title">一句話介紹</div>
+          <div class="hero-card-title">一句話 Pitch</div>
           <p class="muted">
-            看一小段超音波影片 → 模型幫你找出針尖在哪裡，最後變成有紅點的成果影片。
+            如果你常在超音波裡找針尖，這個 AI 產品原型可以幫你省下眼力與時間，也展示了我能獨立完成從資料到 demo 的整條 pipeline。
           </p>
         </div>
       </aside>
     </section>
 
-    <!-- FLOW DIAGRAM（專題介紹圖像化 + 少字） -->
+    <!-- FLOW DIAGRAM：產品價值 -->
     <section id="flow">
-      <h2 class="section-title">專題流程圖 Overview</h2>
+      <h2 class="section-title">產品價值 · 一張圖看懂</h2>
 
       <div class="flow-wrapper">
         <div class="flow-steps">
           <div class="flow-item flow-item-data">
             <div class="flow-number">1</div>
-            <div class="flow-title">資料 & 標註</div>
+            <div class="flow-title">臨床痛點</div>
             <div class="flow-icons">
-              <span class="pill">40 段 ultrasound</span>
-              <span class="pill">每段 ≈ 100 frame</span>
-              <span class="pill">針尖 (x, y)</span>
+              <span class="pill">針尖超小、不好辨識</span>
+              <span class="pill">教學示範難重現</span>
+              <span class="pill">手動標註很花時間</span>
             </div>
           </div>
 
           <div class="flow-item flow-item-model">
             <div class="flow-number">2</div>
-            <div class="flow-title">3D CNN 模型</div>
+            <div class="flow-title">AI 解決方案</div>
             <div class="flow-icons">
-              <span class="pill">R(2+1)D-18</span>
-              <span class="pill">ROI 比例 (rx, ry)</span>
-              <span class="pill">K-fold</span>
+              <span class="pill">3D R(2+1)D 讀取影片</span>
+              <span class="pill">ROI 針尖定位 (rx, ry)</span>
+              <span class="pill">線性 b 方法平滑軌跡</span>
             </div>
           </div>
 
           <div class="flow-item flow-item-output">
             <div class="flow-number">3</div>
-            <div class="flow-title">輸出 & 修正</div>
+            <div class="flow-title">對你帶來的好處</div>
             <div class="flow-icons">
-              <span class="pill">紅點軌跡</span>
-              <span class="pill">線性 b 方法</span>
-              <span class="pill">成果影片 f2</span>
+              <span class="pill">更快確認針尖位置</span>
+              <span class="pill">可做教學與回顧</span>
+              <span class="pill">可延伸到其他介入手術</span>
             </div>
           </div>
         </div>
 
         <p class="flow-caption">
-          圖像化看整個流程：<strong>原始影片 → 3D CNN 推論 → 紅點成果影片</strong>。
+          產品邏輯：<strong>從痛點出發 → 用 AI 解決 → 讓醫療現場更省力、教學更直觀。</strong>
         </p>
       </div>
     </section>
 
     <!-- DEMO -->
     <section id="demo">
-      <h2 class="section-title">成果影片 Demo</h2>
+      <h2 class="section-title">Demo 影片 · 看真實效果</h2>
       <p class="muted" style="margin-bottom: 0.7rem;">
-        needle1.mp4：原始超音波 · f2.mp4：模型畫好紅點的結果。
+        needle1.mp4：原始超音波 · f2.mp4：AI 自動標記針尖紅點的結果。
       </p>
 
       <div class="demo-tabs">
         <button class="demo-tab active" data-demo-target="demo-original">原始影片</button>
-        <button class="demo-tab" data-demo-target="demo-result">偵測結果</button>
+        <button class="demo-tab" data-demo-target="demo-result">AI 結果</button>
         <button class="demo-tab" data-demo-target="demo-both">左右比較</button>
       </div>
 
@@ -677,7 +677,7 @@
             你的瀏覽器不支援 HTML5 影片。
           </video>
           <p class="video-caption">
-            純超音波影像，針尖很小一點，肉眼其實不算好追。
+            純超音波影像，針尖只有小小一點，實際臨床上需要高度專注才能追蹤。
           </p>
         </article>
       </div>
@@ -685,17 +685,17 @@
       <!-- 結果 -->
       <div class="demo-panel" id="demo-result">
         <article class="video-card">
-          <h3>模型偵測結果：f2.mp4</h3>
+          <h3>AI 偵測結果：f2.mp4</h3>
           <video controls preload="metadata" src="f2.mp4" type="video/mp4">
             你的瀏覽器不支援 HTML5 影片。
           </video>
           <p class="video-caption">
-            每一幀的針尖座標由模型預測，再用線性 b 方法平滑整條軌跡。
+            每幀的針尖座標由模型預測，再用線性 b 方法修正，使紅點軌跡穩定貼著真正的針尖。
           </p>
         </article>
       </div>
 
-      <!-- 左右比較：用完整網址，確保能播 -->
+      <!-- 左右比較 -->
       <div class="demo-panel" id="demo-both">
         <div class="demo-side-by-side">
           <article class="video-card">
@@ -711,7 +711,7 @@
           </article>
 
           <article class="video-card">
-            <h3>結果：f2.mp4</h3>
+            <h3>AI 結果：f2.mp4</h3>
             <video
               controls
               preload="metadata"
@@ -723,24 +723,26 @@
           </article>
         </div>
         <p class="video-caption" style="margin-top: 0.6rem;">
-          左右直接對比：紅點有沒有跟著真正的針尖跑。
+          左右直接對比：你可以很直覺地評估 AI 標註的準確度，適不適合你的臨床或研究情境。
         </p>
       </div>
     </section>
 
     <!-- CODE -->
     <section id="code">
-      <h2 class="section-title">程式檔 Code</h2>
+      <h2 class="section-title">技術細節 & 程式檔</h2>
 
       <div class="grid-2">
         <article class="text-card">
-          <p>核心就兩支 Python：</p>
+          <p>如果你是工程師或研究者，這裡是我能提供的技術實力：</p>
           <ul class="text-list">
-            <li><strong>cnn.py</strong>：3D CNN 訓練主程式（K-fold + ROI + loss）。</li>
-            <li><strong>infer.py</strong>：載入權重 → 推論 → 畫紅點 → 輸出 f2.mp4。</li>
+            <li><strong>3D CNN 架構</strong>：使用 R(2+1)D-18，處理時間維度的超音波影片。</li>
+            <li><strong>ROI 座標回歸</strong>：把針尖座標轉成 ROI 比例 (rx, ry) 來訓練。</li>
+            <li><strong>K-fold 訓練流程</strong>：完整的 train / valid 切分與模型儲存。</li>
+            <li><strong>推論到產品 Demo</strong>：從 checkpoint → 預測 → 畫紅點 → 輸出影片。</li>
           </ul>
           <p style="margin-top: 0.6rem;">
-            下面用 Tab 切換，直接下載或在 GitHub 看完整程式。
+            下面用 Tab 切換，可以直接下載程式或整合到你的 pipeline。
           </p>
         </article>
 
@@ -751,8 +753,8 @@
           </div>
 
           <div class="code-tabs">
-            <button class="code-tab active" data-code-target="code-cnn">cnn.py</button>
-            <button class="code-tab" data-code-target="code-infer">infer.py</button>
+            <button class="code-tab active" data-code-target="code-cnn">cnn.py（訓練）</button>
+            <button class="code-tab" data-code-target="code-infer">infer.py（推論 & 產生影片）</button>
           </div>
 
           <!-- cnn.py -->
@@ -760,10 +762,10 @@
             <a class="download-link" href="cnn.py" download>⬇ 下載 cnn.py</a>
             <pre><code># cnn.py 主要流程（摘要）
 # 1. 載入 40 段 ultrasound + CSV 標註
-# 2. 轉成 ROI 比例 (rx, ry)
+# 2. 將座標轉成 ROI 比例 (rx, ry)
 # 3. 建立 R(2+1)D-18 模型
 # 4. 以 K-fold 方式訓練
-# 5. 儲存 best model checkpoint</code></pre>
+# 5. 儲存最佳 checkpoint 作為之後推論使用</code></pre>
           </div>
 
           <!-- infer.py -->
@@ -771,10 +773,10 @@
             <a class="download-link" href="infer.py" download>⬇ 下載 infer.py</a>
             <pre><code># infer.py 主要流程（摘要）
 # 1. 讀取訓練好的 checkpoint
-# 2. 將 needle1.mp4 切成 clips 做前處理
+# 2. 將 needle1.mp4 切成 clips 並做前處理
 # 3. 以 3D CNN 推論每幀針尖座標
-# 4. 使用線性 b 方法修正軌跡
-# 5. 在畫面上畫紅點，輸出 f2.mp4</code></pre>
+# 4. 使用線性 b 方法修正軌跡，濾掉離群點
+# 5. 在畫面上畫紅點，輸出 f2.mp4 作為 Demo</code></pre>
           </div>
         </article>
       </div>
@@ -782,21 +784,21 @@
 
     <!-- ABOUT -->
     <section id="about">
-      <h2 class="section-title">關於 Project & Me</h2>
+      <h2 class="section-title">關於我 & 合作想法</h2>
 
       <div class="contact-grid">
         <article class="text-card">
-          <p>這個頁面是我的生醫 AI 專題小作品：</p>
+          <p>我喜歡把醫療現場的實際問題，變成可以 demo 的 AI 產品原型。</p>
           <ul class="text-list">
-            <li>自己蒐集超音波資料、標註針尖。</li>
-            <li>自己寫 3D CNN 訓練與推論程式。</li>
-            <li>做出可以給別人看的一段成果影片。</li>
+            <li>可以獨立完成：資料整理 → 模型設計 → 訓練 → 推論 → Demo 影片。</li>
+            <li>熟悉影像 / 時序資料處理、PyTorch、3D CNN 與基本數據前處理。</li>
+            <li>未來希望跟醫師、研究團隊或公司一起，把原型變成真正被使用的產品。</li>
           </ul>
         </article>
 
         <aside class="contact-box">
-          <h3>Contact</h3>
-          <p>若對專題或程式有興趣，歡迎聯絡我。</p>
+          <h3>想合作嗎？歡迎直接找我</h3>
+          <p>如果你正在做生醫或 AI 相關專案，需要一個會自己動手寫 code、願意熬夜 debug 的夥伴，很歡迎跟我聊聊。</p>
           <div class="contact-info">
             <div>📧 Email：percypercy123123@gmail.com</div>
             <div>📱 Phone：0912907208</div>
