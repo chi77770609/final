@@ -748,15 +748,15 @@
       </div>
     </section>
 
-    <!-- 市場圓餅圖 -->
+    <!-- 市場圓餅圖：AI 產業中醫療 AI 佔比 -->
     <section id="market">
-      <h2 class="section-title">醫療 AI 市場 & 我的定位</h2>
+      <h2 class="section-title">AI 產業中 · 醫療 AI 的位置</h2>
 
       <div class="market-wrapper">
         <div class="market-inner">
           <canvas id="marketChart"></canvas>
           <p class="market-caption">
-            * 圖表為示意分布：大型企業、醫院系統、研究單位，還有像我這樣的產品原型 —— 在小比例裡持續成長。
+            * 示意圖：假設醫療 AI 約佔整體 AI 產業的 20%，但多落在高風險、高價值的關鍵場景。
           </p>
         </div>
       </div>
@@ -922,7 +922,7 @@
   </main>
 
   <footer>
-    © <span id="year"></span> Biomedical AI Needle Tip Project.
+    © <span id="year"></span> Biomedical AI Needle Tip Project。
   </footer>
 
   <!-- Chart.js CDN -->
@@ -992,29 +992,23 @@
       });
     }
 
-    // 市場圓餅圖（示意數據）
+    // 市場圓餅圖：AI 產業中醫療 AI 佔比（示意 20%）
     const marketCtx = document.getElementById("marketChart");
     if (marketCtx && window.Chart) {
       new Chart(marketCtx, {
         type: "pie",
         data: {
           labels: [
-            "大型醫療 AI 企業",
-            "醫院 / 醫療系統",
-            "學術與研究單位",
-            "我的產品原型"
+            "醫療 AI",
+            "其他 AI 應用"
           ],
           datasets: [{
-            data: [40, 30, 20, 10],
+            data: [20, 80],
             backgroundColor: [
-              "rgba(59, 130, 246, 0.9)",
-              "rgba(16, 185, 129, 0.9)",
-              "rgba(139, 92, 246, 0.9)",
-              "rgba(248, 113, 113, 0.95)"
+              "rgba(56, 189, 248, 0.9)",  // 醫療 AI
+              "rgba(107, 114, 128, 0.9)" // 其他 AI
             ],
             borderColor: [
-              "rgba(15, 23, 42, 1)",
-              "rgba(15, 23, 42, 1)",
               "rgba(15, 23, 42, 1)",
               "rgba(15, 23, 42, 1)"
             ],
