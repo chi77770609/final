@@ -86,7 +86,7 @@
     }
     .muted { color: #9ca3af; font-size: 0.9rem; }
 
-    /* HERO（頂部醫學感背景，用你的圖片） */
+    /* HERO（頂部背景：用你的 hero-bg.webp） */
     .hero {
       position: relative;
       margin-top: 1.1rem;
@@ -245,42 +245,34 @@
     .badge-amber { border-color: rgba(245,158,11,0.9); color: #fed7aa; }
     .badge-indigo { border-color: rgba(79,70,229,0.9); color: #c7d2fe; }
 
-    /* Flow diagram（產品價值：可滑動，卡片加大） */
+    /* Flow diagram（產品價值：一次一張大圖卡，點一下換下一張） */
     .flow-wrapper {
       background: rgba(15, 23, 42, 0.96);
       border-radius: 1.1rem;
       border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 1.1rem 1.3rem 1.3rem;
+      padding: 1.3rem 1.5rem 1.4rem;
       box-shadow: 0 16px 36px rgba(15, 23, 42, 0.85);
+      text-align: center;
     }
-    .flow-steps {
-      display: flex;
-      gap: 1.2rem;
-      margin-bottom: 0.7rem;
-      overflow-x: auto;
-      padding: 0.3rem 0 0.6rem;
-      scroll-snap-type: x mandatory;
-    }
-    .flow-steps::-webkit-scrollbar {
-      height: 6px;
-    }
-    .flow-steps::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .flow-steps::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.6);
-      border-radius: 999px;
-    }
-    .flow-item {
+    .flow-card {
       position: relative;
-      border-radius: 1rem;
-      padding: 1.05rem 1rem;
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.9rem;
+      border-radius: 1.1rem;
+      padding: 1.2rem 1.3rem;
+      display: none;
+      gap: 0.5rem;
+      font-size: 0.95rem;
       color: #e5e7eb;
-      min-width: 340px;       /* 卡片變大 */
-      scroll-snap-align: center;
+      max-width: 620px;
+      margin: 0 auto 0.6rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .flow-card:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 20px 45px rgba(15,23,42,0.95);
+    }
+    .flow-card.active {
+      display: grid;
     }
     .flow-item-data {
       background: radial-gradient(circle at top left, rgba(59,130,246,0.35), transparent 65%), #020617;
@@ -298,28 +290,29 @@
       box-shadow: 0 0 28px rgba(236,72,153,0.55);
     }
     .flow-number {
-      width: 26px;
-      height: 26px;
+      width: 28px;
+      height: 28px;
       border-radius: 999px;
       background: rgba(15,23,42,0.95);
       border: 1px solid rgba(248,250,252,0.9);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 700;
       margin-bottom: 0.15rem;
     }
     .flow-title {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 600;
     }
     .flow-icons {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem;
+      justify-content: center;
+      gap: 0.4rem;
       font-size: 0.8rem;
-      margin-top: 0.15rem;
+      margin-top: 0.25rem;
     }
     .pill {
       padding: 0.18rem 0.6rem;
@@ -613,45 +606,43 @@
       </aside>
     </section>
 
-    <!-- FLOW DIAGRAM：產品價值（滑動卡片） -->
+    <!-- FLOW DIAGRAM：產品價值（一次一張，點一下換下一張） -->
     <section id="flow">
-      <h2 class="section-title">產品價值 · 滑動看重點</h2>
+      <h2 class="section-title">產品價值 · 一張張看</h2>
 
       <div class="flow-wrapper">
-        <div class="flow-steps" id="flowSteps">
-          <div class="flow-item flow-item-data">
-            <div class="flow-number">1</div>
-            <div class="flow-title">臨床痛點</div>
-            <div class="flow-icons">
-              <span class="pill">針尖超小、不好辨識</span>
-              <span class="pill">教學示範難重現</span>
-              <span class="pill">手動標註很花時間</span>
-            </div>
+        <div class="flow-card flow-item-data active">
+          <div class="flow-number">1</div>
+          <div class="flow-title">臨床痛點</div>
+          <div class="flow-icons">
+            <span class="pill">針尖超小、不好辨識</span>
+            <span class="pill">教學示範難重現</span>
+            <span class="pill">手動標註很花時間</span>
           </div>
+        </div>
 
-          <div class="flow-item flow-item-model">
-            <div class="flow-number">2</div>
-            <div class="flow-title">AI 解決方案</div>
-            <div class="flow-icons">
-              <span class="pill">3D R(2+1)D 讀取影片</span>
-              <span class="pill">ROI 針尖定位 (rx, ry)</span>
-              <span class="pill">線性 b 方法平滑軌跡</span>
-            </div>
+        <div class="flow-card flow-item-model">
+          <div class="flow-number">2</div>
+          <div class="flow-title">AI 解決方案</div>
+          <div class="flow-icons">
+            <span class="pill">3D R(2+1)D 讀取影片</span>
+            <span class="pill">ROI 針尖定位 (rx, ry)</span>
+            <span class="pill">線性 b 方法平滑軌跡</span>
           </div>
+        </div>
 
-          <div class="flow-item flow-item-output">
-            <div class="flow-number">3</div>
-            <div class="flow-title">帶來的好處</div>
-            <div class="flow-icons">
-              <span class="pill">更快確認針尖位置</span>
-              <span class="pill">可做教學與回顧</span>
-              <span class="pill">可延伸到其他介入手術</span>
-            </div>
+        <div class="flow-card flow-item-output">
+          <div class="flow-number">3</div>
+          <div class="flow-title">帶來的好處</div>
+          <div class="flow-icons">
+            <span class="pill">更快確認針尖位置</span>
+            <span class="pill">可做教學與回顧</span>
+            <span class="pill">可延伸到其他介入手術</span>
           </div>
         </div>
 
         <p class="flow-caption">
-          電腦：滑鼠滾輪即可左右滑動卡片；手機：直接左右滑動即可。
+          點一下卡片 → 自動跳到下一步驟（1 → 2 → 3 → 再回到 1）。
         </p>
       </div>
     </section>
@@ -861,16 +852,17 @@
       });
     });
 
-    // 讓滑鼠滾輪控制產品價值水平滑動
-    const flowSteps = document.getElementById("flowSteps");
-    if (flowSteps) {
-      flowSteps.addEventListener("wheel", (e) => {
-        // Shift + 滾輪原本就會水平，所以只攔一般垂直滾動
-        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-          e.preventDefault();
-          flowSteps.scrollLeft += e.deltaY;
-        }
-      }, { passive: false });
+    // Flow cards：一次一張，點一下跳下一張
+    const flowCards = document.querySelectorAll(".flow-card");
+    let currentFlow = 0;
+    if (flowCards.length > 0) {
+      flowCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          flowCards[currentFlow].classList.remove("active");
+          currentFlow = (currentFlow + 1) % flowCards.length;
+          flowCards[currentFlow].classList.add("active");
+        });
+      });
     }
 
     // year
